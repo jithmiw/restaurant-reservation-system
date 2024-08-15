@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="assets/img/favicon.png" rel="icon">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Jithmi Wannakukorala" name="author">
@@ -13,10 +14,10 @@
 
     <title>ABC Restaurant</title>
 </head>
-<body>
+<body style="background-color: gold">
 <header>
     <!--NAVIGATION BAR-->
-    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-white shadow">
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg shadow" style="background-color: gold">
         <div class="container-fluid">
             <a class="navbar-brand text-black fw-bolder">
                 <img alt="Logo" class="d-inline-block align-text-top" height="70" src="assets/img/logo.png"
@@ -30,54 +31,94 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a aria-current="page" class="nav-link active text-black fw-semibold" href="#home">ABOUT</a>
+                        <a aria-current="page" class="nav-link active text-black fw-bold" href="#home">ABOUT</a>
                     </li>
                     <li class="nav-item">
-                        <a aria-current="page" class="nav-link active text-black fw-semibold" href=""
+                        <a aria-current="page" class="nav-link active text-black fw-bold" href=""
                            target="_blank">MENUS</a>
                     </li>
                     <li class="nav-item">
-                        <a aria-current="page" class="nav-link active text-black fw-semibold"
+                        <a aria-current="page" class="nav-link active text-black fw-bold"
                            href="#services">SERVICES</a>
                     </li>
                     <li class="nav-item">
-                        <a aria-current="page" class="nav-link active text-black fw-semibold"
+                        <a aria-current="page" class="nav-link active text-black fw-bold"
                            href="#offers">OFFERS</a>
                     </li>
                     <li class="nav-item">
-                        <a aria-current="page" class="nav-link active text-black fw-semibold"
+                        <a aria-current="page" class="nav-link active text-black fw-bold"
                            href="#gallery">GALLERY</a>
                     </li>
                     <li class="nav-item">
-                        <a aria-current="page" class="nav-link active text-black fw-semibold"
+                        <a aria-current="page" class="nav-link active text-black fw-bold"
                            href="#contact-us">CONTACT</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-black fw-semibold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-black fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             ACCOUNT
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu" style="background-color: #000000">
                             <li><!-- Login Button trigger modal -->
-                                <a class="nav-link active text-black fw-semibold" data-bs-target="#staticBackdrop1"
-                                   data-bs-toggle="modal">
+                                <a class="nav-link active fw-semibold" data-bs-target="#staticBackdrop1"
+                                   data-bs-toggle="modal" style="cursor: pointer; color: gold;">
                                     LOGIN
                                 </a></li>
                             <li><!-- Sign up Button trigger modal -->
-                                <a class="nav-link active text-black fw-semibold" data-bs-target="#signup-modal"
-                                   data-bs-toggle="modal">
+                                <a class="nav-link active fw-semibold" data-bs-target="#signup-modal"
+                                   data-bs-toggle="modal" style="cursor: pointer; color: gold;">
                                     SIGN UP
                                 </a></li>
                         </ul>
                     </li>
                     <!-- Reservations trigger modal -->
-                    <button class="btn btn-dark fw-semibold" data-bs-target="#reservation-modal" data-bs-toggle="modal"
-                            type="button">
+                    <button class="btn btn-outline-dark fw-bold" data-bs-target="#reservation-modal" data-bs-toggle="modal"
+                            type="button" style="border-width: medium">
                         RESERVATIONS
                     </button>
                 </ul>
             </div>
         </div>
     </nav>
+    <!-- Login Modal -->
+    <div aria-hidden="true" aria-labelledby="staticBackdropLabel1" class="modal fade" data-bs-backdrop="static"
+         data-bs-keyboard="false"
+         id="staticBackdrop1" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="d-flex flex-column">
+                        <h1 class="modal-title fs-5 fw-bold" id="staticBackdropLabel1">Login</h1>
+                        <span style="color: #aaaaaa">Don't have an account?
+                            <button class="btn btn-link text-decoration-none pt-0" data-bs-target="#signup-modal"
+                                    data-bs-toggle="modal">Sign Up</button>
+                        </span>
+                    </div>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body">
+                    <!--LOGIN FORM-->
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label class="form-label" for="enterUsername">Username</label>
+                            <input class="form-control" id="enterUsername" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="enterPassword">Password</label>
+                            <div class="d-flex flex-row align-items-center">
+                                <input class="form-control me-2" id="enterPassword" type="password">
+                                <i class="bi bi-eye-slash" id="toggleLoginPassword" style="cursor: pointer"></i>
+                            </div>
+                        </div>
+                        <div class="modal-footer col-12 me-auto pe-0">
+                            <button class="btn btn-link text-decoration-none pt-0" data-bs-target="#signup-modal"
+                                    data-bs-toggle="modal">Forgot Password?</button>
+                            <button class="btn btn-dark me-0" id="loginUser" type="button">LOGIN</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </header>
 <script crossorigin="anonymous"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
