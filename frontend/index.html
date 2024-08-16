@@ -14,14 +14,14 @@
 
     <title>ABC Restaurant</title>
 </head>
-<body style="background-color: gold">
+<body style="background-color: #0a0908">
 <header>
     <!--NAVIGATION BAR-->
-    <nav class="navbar fixed-top navbar-dark navbar-expand-lg shadow" style="background-color: gold">
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg shadow" style="background-color: #0a0908">
         <div class="container-fluid">
             <a class="navbar-brand text-black fw-bolder">
-                <img alt="Logo" class="d-inline-block align-text-top" height="70" src="assets/img/logo.png"
-                     width="230">
+                <img alt="Logo" class="d-inline-block align-text-top" height="68" src="assets/img/logo.png"
+                     width="224">
             </a>
             <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
                     class="navbar-toggler bg-black" data-bs-target="#navbarSupportedContent"
@@ -31,48 +31,48 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a aria-current="page" class="nav-link active text-black fw-bold" href="#home">ABOUT</a>
+                        <a aria-current="page" class="nav-link active fw-light" href="#about">ABOUT</a>
                     </li>
                     <li class="nav-item">
-                        <a aria-current="page" class="nav-link active text-black fw-bold" href=""
+                        <a aria-current="page" class="nav-link active fw-light" href=""
                            target="_blank">MENUS</a>
                     </li>
                     <li class="nav-item">
-                        <a aria-current="page" class="nav-link active text-black fw-bold"
+                        <a aria-current="page" class="nav-link active fw-light"
                            href="#services">SERVICES</a>
                     </li>
                     <li class="nav-item">
-                        <a aria-current="page" class="nav-link active text-black fw-bold"
+                        <a aria-current="page" class="nav-link active fw-light"
                            href="#offers">OFFERS</a>
                     </li>
                     <li class="nav-item">
-                        <a aria-current="page" class="nav-link active text-black fw-bold"
+                        <a aria-current="page" class="nav-link active fw-light"
                            href="#gallery">GALLERY</a>
                     </li>
                     <li class="nav-item">
-                        <a aria-current="page" class="nav-link active text-black fw-bold"
+                        <a aria-current="page" class="nav-link active fw-light"
                            href="#contact-us">CONTACT</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-black fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-white fw-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             ACCOUNT
                         </a>
-                        <ul class="dropdown-menu" style="background-color: #000000">
+                        <ul class="dropdown-menu" style="background-color: #0a0908">
                             <li><!-- Login Button trigger modal -->
-                                <a class="nav-link active fw-semibold" data-bs-target="#staticBackdrop1"
-                                   data-bs-toggle="modal" style="cursor: pointer; color: gold;">
+                                <a class="nav-link active fw-light" data-bs-target="#staticBackdrop1"
+                                   data-bs-toggle="modal" style="cursor: pointer;">
                                     LOGIN
                                 </a></li>
                             <li><!-- Sign up Button trigger modal -->
-                                <a class="nav-link active fw-semibold" data-bs-target="#signup-modal"
-                                   data-bs-toggle="modal" style="cursor: pointer; color: gold;">
+                                <a class="nav-link active fw-light" data-bs-target="#signup-modal"
+                                   data-bs-toggle="modal" style="cursor: pointer;">
                                     SIGN UP
                                 </a></li>
                         </ul>
                     </li>
                     <!-- Reservations trigger modal -->
-                    <button class="btn btn-outline-dark fw-bold" data-bs-target="#reservation-modal" data-bs-toggle="modal"
-                            type="button" style="border-width: medium">
+                    <button class="btn btn-outline-light fw-bold" data-bs-target="#reservation-modal" data-bs-toggle="modal"
+                            type="button">
                         RESERVATIONS
                     </button>
                 </ul>
@@ -174,23 +174,23 @@
 </header>
 <main>
     <!--HOME SECTION-->
-    <section>
+    <section style="margin-top: 100px;">
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="assets/img/header-img-1.jpg" class="d-block w-100" alt="img-1">
+                    <img src="assets/img/header-img-1.jpg" class="d-block w-100" alt="…">
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/img/header-img-2.jpg" class="d-block w-100" alt="img-2">
+                    <img src="assets/img/header-img-2.jpg" class="d-block w-100" alt="…">
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/img/header-img-3.jpg" class="d-block w-100" alt="img-3">
+                    <img src="assets/img/header-img-3.jpg" class="d-block w-100" alt="…">
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/img/header-img-4.jpg" class="d-block w-100" alt="img-4">
+                    <img src="assets/img/header-img-4.jpg" class="d-block w-100" alt="…">
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/img/header-img-5.jpg" class="d-block w-100" alt="img-5">
+                    <img src="assets/img/header-img-5.jpg" class="d-block w-100" alt="…">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -201,6 +201,18 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
+        </div>
+    </section>
+    <!--ABOUT SECTION-->
+    <section id="about">
+        <div style="background: url('assets/img/about-background.jpg') no-repeat center center; background-size: cover;">
+            <div class="container pt-5 px-4" style="padding-bottom: 350px;">
+                <p class="fs-1 text-white fw-bold pb-4">ABOUT US</p>
+                <p class="text-white">At ABC Restaurant, we believe in bringing together the best local ingredients with the skills of our talented chefs to create meals that capture the true flavors of Sri Lanka. Since our establishment, we have focused on delivering a dining experience that is both authentic and innovative.</p>
+                <p class="text-white">Our chefs carefully select ingredients from trusted local farmers and suppliers, ensuring that every dish is made with fresh, high-quality produce. Whether it’s a traditional Sri Lankan dish or a modern twist on a classic, we take pride in offering a menu that’s exciting and full of flavor.</p>
+                <p class="text-white">At ABC Restaurant, we are constantly evolving. Our menu changes regularly to showcase the freshest ingredients of the season, and our team is always experimenting with new ideas to keep your dining experience fresh and enjoyable.</p>
+                <p class="text-white">Join us for a meal where tradition meets creativity, and where every bite is a celebration of our commitment to quality and taste.</p>
+            </div>
         </div>
     </section>
 </main>
