@@ -35,11 +35,11 @@
                     </li>
                     <li class="nav-item">
                         <a aria-current="page" class="nav-link active fw-light" href=""
-                           target="_blank">MENUS</a>
+                           target="_blank">MENU</a>
                     </li>
                     <li class="nav-item">
                         <a aria-current="page" class="nav-link active fw-light"
-                           href="#services">SERVICES</a>
+                           href="#delivery">DELIVERY</a>
                     </li>
                     <li class="nav-item">
                         <a aria-current="page" class="nav-link active fw-light"
@@ -53,22 +53,11 @@
                         <a aria-current="page" class="nav-link active fw-light"
                            href="#contact-us">CONTACT</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white fw-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            ACCOUNT
+                    <li class="nav-item">
+                        <a class="nav-link active fw-light pe-3" data-bs-target="#staticBackdrop1"
+                           data-bs-toggle="modal" style="cursor: pointer;">
+                            LOGIN
                         </a>
-                        <ul class="dropdown-menu" style="background-color: #0a0908">
-                            <li><!-- Login Button trigger modal -->
-                                <a class="nav-link active fw-light" data-bs-target="#staticBackdrop1"
-                                   data-bs-toggle="modal" style="cursor: pointer;">
-                                    LOGIN
-                                </a></li>
-                            <li><!-- Sign up Button trigger modal -->
-                                <a class="nav-link active fw-light" data-bs-target="#signup-modal"
-                                   data-bs-toggle="modal" style="cursor: pointer;">
-                                    SIGN UP
-                                </a></li>
-                        </ul>
                     </li>
                     <!-- Reservations trigger modal -->
                     <button class="btn btn-outline-light fw-bold" data-bs-target="#reservation-modal" data-bs-toggle="modal"
@@ -122,7 +111,7 @@
     <div aria-hidden="true" aria-labelledby="staticBackdropLabel" class="modal fade" data-bs-backdrop="static"
          data-bs-keyboard="false"
          id="signup-modal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="d-flex flex-column">
@@ -135,31 +124,27 @@
                 </div>
                 <div class="modal-body">
                     <!--SIGN UP FORM-->
-                    <form class="row g-3" id="customerForm">
-                        <div class="col-md-6">
-                            <label class="form-label" for="inputName">Name</label>
-                            <input class="form-control" id="inputName" name="customer_name" type="text">
+                    <form id="customerForm">
+                        <div class="mb-3">
+                            <label class="form-label" for="inputName">Full Name</label>
+                            <input class="form-control" id="inputName" name="customer_name" type="text" required>
                         </div>
-                        <div class="col-md-6">
-                            <label class="form-label" for="inputAddress">Address</label>
-                            <input class="form-control" id="inputAddress" name="address" type="text">
+                        <div class="mb-3">
+                            <label class="form-label" for="inputContact">Mobile No</label>
+                            <input class="form-control" id="inputContact" name="contact" type="text" required>
                         </div>
-                        <div class="col-md-6">
+                        <div class="mb-3">
                             <label class="form-label" for="inputEmail">Email</label>
-                            <input class="form-control" id="inputEmail" name="email" type="email">
+                            <input class="form-control" id="inputEmail" name="email" type="email" required>
                         </div>
-                        <div class="col-md-6">
-                            <label class="form-label" for="inputContactNo">Contact No</label>
-                            <input class="form-control" id="inputContactNo" name="contact_no" type="text">
-                        </div>
-                        <div class="col-md-6">
+                        <div class="mb-3">
                             <label class="form-label" for="inputUsername">Username</label>
-                            <input class="form-control" id="inputUsername" name="username" type="text">
+                            <input class="form-control" id="inputUsername" name="username" type="text" required>
                         </div>
-                        <div class="col-md-6">
+                        <div class="mb-3">
                             <label class="form-label" for="inputPassword">Password</label>
                             <div class="d-flex flex-row align-items-center">
-                                <input class="form-control me-2" id="inputPassword" name="password" type="password">
+                                <input class="form-control me-2" id="inputPassword" name="password" type="password" required>
                                 <i class="bi bi-eye-slash" id="toggleSignupPassword" style="cursor: pointer"></i>
                             </div>
                         </div>
@@ -205,22 +190,22 @@
     </section>
     <!--ABOUT SECTION-->
     <section id="about">
-        <div style="background: url('assets/img/about-background.jpg') no-repeat center center; background-size: cover;">
+        <div style="background: url('assets/img/about-bg.jpg') no-repeat center center; background-size: cover;">
             <div class="container pt-5 px-4" style="padding-bottom: 350px;">
                 <p class="fs-1 text-white fw-bold pb-4">ABOUT US</p>
-                <p class="text-white">At ABC Restaurant, we believe in bringing together the best local ingredients with the skills of our talented chefs to create meals that capture the true flavors of Sri Lanka. Since our establishment, we have focused on delivering a dining experience that is both authentic and innovative.</p>
-                <p class="text-white">Our chefs carefully select ingredients from trusted local farmers and suppliers, ensuring that every dish is made with fresh, high-quality produce. Whether it’s a traditional Sri Lankan dish or a modern twist on a classic, we take pride in offering a menu that’s exciting and full of flavor.</p>
-                <p class="text-white">At ABC Restaurant, we are constantly evolving. Our menu changes regularly to showcase the freshest ingredients of the season, and our team is always experimenting with new ideas to keep your dining experience fresh and enjoyable.</p>
-                <p class="text-white">Join us for a meal where tradition meets creativity, and where every bite is a celebration of our commitment to quality and taste.</p>
+                <p class="text-white fw-light">At ABC Restaurant, we believe in bringing together the best local ingredients with the skills of our talented chefs to create meals that capture the true flavors of Sri Lanka. Since our establishment, we have focused on delivering a dining experience that is both authentic and innovative.</p>
+                <p class="text-white fw-light">Our chefs carefully select ingredients from trusted local farmers and suppliers, ensuring that every dish is made with fresh, high-quality produce. Whether it’s a traditional Sri Lankan dish or a modern twist on a classic, we take pride in offering a menu that’s exciting and full of flavor.</p>
+                <p class="text-white fw-light">At ABC Restaurant, we are constantly evolving. Our menu changes regularly to showcase the freshest ingredients of the season, and our team is always experimenting with new ideas to keep your dining experience fresh and enjoyable.</p>
+                <p class="text-white fw-light">Join us for a meal where tradition meets creativity, and where every bite is a celebration of our commitment to quality and taste.</p>
             </div>
         </div>
     </section>
 </main>
 <!-- FOOTER -->
-<footer class="text-center text-lg-start text-dark" style="background-color: #4d4d4d">
+<footer class="text-center text-lg-start" style="background: url('assets/img/footer-bg.jpg') no-repeat center center; background-size: cover;">
     <!-- SOCIAL MEDIA -->
-    <section class="bg-black d-flex justify-content-between p-4 text-white">
-        <div class="me-5">
+    <section class="d-flex justify-content-between p-4 text-white">
+        <div class="me-5 fw-light">
             <span>Get connected with us on social networks:</span>
         </div>
         <div class="d-flex flex-row align-items-center">
@@ -238,29 +223,29 @@
     <!-- CONTACT  -->
     <section id="contact-us">
         <div class="container text-center text-md-start mt-5 mb-5">
-            <div class="row mt-3">
+            <div class="row mt-3 fw-light" style="color: #ccc;">
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                     <h6 class="text-uppercase fw-bold">Features</h6>
                     <hr class="mb-4 mt-0 d-inline-block mx-auto"
                         style="width: 60px; background-color: #828282; height: 2px"/>
-                    <p class="fw-semibold"><i class="bi bi-car-front"></i> Delivery Services</p>
-                    <p class="fw-semibold"><i class="bi bi-bag"></i> Takeaway Services</p>
-                    <p class="fw-semibold"><i class="bi bi-phone"></i> Convenient Online Reservations</p>
+                    <p><i class="bi bi-phone"></i> Convenient Online Reservations</p>
+                    <p><i class="bi bi-car-front"></i> Delivery Services</p>
+                    <p><i class="bi bi-percent"></i> Special Offers</p>
                 </div>
-                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4" >
                     <!-- LINKS -->
                     <h6 class="text-uppercase fw-bold">Contact</h6>
                     <hr class="mb-4 mt-0 d-inline-block mx-auto"
                         style="width: 60px; background-color: #828282; height: 2px"/>
                     <p><i class="bi bi-geo-alt-fill"></i> Galle, Sri Lanka | Colombo, Sri Lanka</p>
-                    <p><i class="bi bi-telephone-fill"></i> +94 91 520 6803 | +94 11 520 6803 </p>
+                    <p><i class="bi bi-telephone-fill"></i> +94 91 520 6803 | +94 11 250 3068</p>
                     <p><i class="bi bi-envelope-fill"></i> abcrestuarant@gmail.com</p>
                 </div>
             </div>
         </div>
     </section>
     <!-- COPYRIGHT -->
-    <div class="text-center p-3" style="font-size: 13px;">
+    <div class="text-center fw-light p-3" style="font-size: 13px; color: #ccc;">
         Copyright &copy; 2024. All rights reserved | Designed & Developed by Jithmi Wannakukorala
     </div>
 </footer>
