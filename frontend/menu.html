@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="assets/css/styles.css" rel="stylesheet">
+    <link href="assets/img/favicon.png" rel="icon">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Jithmi Wannakukorala" name="author">
+    <meta content="Restaurant Reservation System" name="description">
+    <meta content="Restaurant Reservation System, Online Restaurant Booking, ABC Restaurant, Restaurant Reservations, Sri Lanka Dining, Restaurant Services, Table Booking, Food Delivery, Dine-In Reservations, Restaurant Website, Hospitality Services, Online Food Ordering, Restaurant Management System, Sri Lanka Restaurant, ABC Restaurant Reservations"
+          name="keywords">
+
+    <title>ABC Restaurant</title>
+</head>
+<body style="background-color: #0a0908">
+<header>
+    <!--NAVIGATION BAR-->
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg shadow" style="background-color: #0a0908">
+        <div class="container-fluid">
+            <a class="navbar-brand text-black fw-bolder">
+                <img alt="Logo" class="d-inline-block align-text-top" height="68" src="assets/img/logo.png"
+                     width="224">
+            </a>
+            <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                    class="navbar-toggler bg-black" data-bs-target="#navbarSupportedContent"
+                    data-bs-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a aria-current="page" class="nav-link active fw-light" href="index.html">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a aria-current="page" class="nav-link active fw-light" href="menu.html">MENU</a>
+                    </li>
+                    <li class="nav-item">
+                        <a aria-current="page" class="nav-link active fw-light"
+                           href="#delivery">DELIVERY</a>
+                    </li>
+                    <li class="nav-item">
+                        <a aria-current="page" class="nav-link active fw-light"
+                           href="#offers">OFFERS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a aria-current="page" class="nav-link active fw-light"
+                           href="#gallery">GALLERY</a>
+                    </li>
+                    <li class="nav-item">
+                        <a aria-current="page" class="nav-link active fw-light"
+                           href="#contact-us">CONTACT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active fw-light pe-3" data-bs-target="#staticBackdrop1"
+                           data-bs-toggle="modal" style="cursor: pointer;">
+                            LOGIN
+                        </a>
+                    </li>
+                    <!-- Reservations trigger modal -->
+                    <button class="btn btn-outline-light fw-bold" data-bs-target="#reservation-modal"
+                            data-bs-toggle="modal"
+                            type="button">
+                        RESERVATIONS
+                    </button>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Login Modal -->
+    <div aria-hidden="true" aria-labelledby="staticBackdropLabel1" class="modal fade" data-bs-backdrop="static"
+         data-bs-keyboard="false"
+         id="staticBackdrop1" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="d-flex flex-column">
+                        <h1 class="modal-title fs-5 fw-bold" id="staticBackdropLabel1">Login</h1>
+                        <span style="color: #aaaaaa">Don't have an account?
+                            <button class="btn btn-link text-decoration-none pt-0" data-bs-target="#signup-modal"
+                                    data-bs-toggle="modal">Sign Up</button>
+                        </span>
+                    </div>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body">
+                    <!--LOGIN FORM-->
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label class="form-label" for="enterUsername">Username</label>
+                            <input class="form-control" id="enterUsername" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="enterPassword">Password</label>
+                            <div class="d-flex flex-row align-items-center">
+                                <input class="form-control me-2" id="enterPassword" type="password">
+                                <i class="bi bi-eye-slash" id="toggleLoginPassword" style="cursor: pointer"></i>
+                            </div>
+                        </div>
+                        <div class="modal-footer col-12 me-auto pe-0">
+                            <button class="btn btn-link text-decoration-none pt-0">Forgot Password?</button>
+                            <button class="btn btn-dark me-0" id="loginUser" type="button">LOGIN</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sign Up Modal -->
+    <div aria-hidden="true" aria-labelledby="staticBackdropLabel" class="modal fade" data-bs-backdrop="static"
+         data-bs-keyboard="false"
+         id="signup-modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="d-flex flex-column">
+                        <h1 class="modal-title fs-5 fw-bold" id="staticBackdropLabel">Sign Up</h1>
+                        <span style="color: #aaaaaa">Already have an account?<button
+                                class="btn btn-link text-decoration-none pt-0" data-bs-target="#staticBackdrop1"
+                                data-bs-toggle="modal">Login</button></span>
+                    </div>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body">
+                    <!--SIGN UP FORM-->
+                    <form id="customerForm">
+                        <div class="mb-3">
+                            <label class="form-label" for="inputName">Full Name</label>
+                            <input class="form-control" id="inputName" name="customer_name" required type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="inputContact">Mobile No</label>
+                            <input class="form-control" id="inputContact" name="contact" required type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="inputEmail">Email</label>
+                            <input class="form-control" id="inputEmail" name="email" required type="email">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="inputUsername">Username</label>
+                            <input class="form-control" id="inputUsername" name="username" required type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="inputPassword">Password</label>
+                            <div class="d-flex flex-row align-items-center">
+                                <input class="form-control me-2" id="inputPassword" name="password" required
+                                       type="password">
+                                <i class="bi bi-eye-slash" id="toggleSignupPassword" style="cursor: pointer"></i>
+                            </div>
+                        </div>
+                        <div class="modal-footer col-12 me-auto pe-2">
+                            <button class="btn btn-dark me-0" id="saveCustomer" type="button">SIGN UP</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+    <!--MENU SECTION-->
+    <section id="menu" style="margin-top: 100px;">
+        <div class="text-white">
+            <div class="container py-5 px-4">
+                <p class="fs-1 text-white fw-bold pb-4">MENU</p>
+                <p class="text-white fw-light">At the core of our menus are the ingredients which are mainly local and
+                    form the soul of our cuisine. At abc, flavour is king, and change is a cherished constant. The menu
+                    at our restaurant is regularly reimagined, and as each new ingredient arrives, the
+                    culinary team accepts the challenge and explores the opportunities with trademark creativity and
+                    technical skill.</p>
+                <ul class="nav nav-tabs justify-content-center pt-5" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button aria-controls="breakfast-tab-pane" aria-selected="true" class="nav-link active"
+                                data-bs-target="#breakfast-tab-pane" data-bs-toggle="tab" id="breakfast-tab" role="tab"
+                                type="button">BREAKFAST
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button aria-controls="lunch-tab-pane" aria-selected="false" class="nav-link"
+                                data-bs-target="#lunch-tab-pane" data-bs-toggle="tab" id="lunch-tab"
+                                role="tab" type="button">LUNCH
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button aria-controls="dinner-tab-pane" aria-selected="false" class="nav-link"
+                                data-bs-target="#dinner-tab-pane" data-bs-toggle="tab" id="dinner-tab"
+                                role="tab" type="button">DINNER
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button aria-controls="dessert-tab-pane" aria-selected="false" class="nav-link"
+                                data-bs-target="#dessert-tab-pane" data-bs-toggle="tab" id="dessert-tab"
+                                role="tab" type="button">DESSERT
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button aria-controls="tea-tab-pane" aria-selected="false" class="nav-link"
+                                data-bs-target="#tea-tab-pane" data-bs-toggle="tab" id="tea-tab"
+                                role="tab" type="button">AFTERNOON TEA
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content pt-4" id="myTabContent">
+                    <div aria-labelledby="breakfast-tab" class="tab-pane fade show active" id="breakfast-tab-pane"
+                         role="tabpanel"
+                         tabindex="0">
+                        <div>
+                            <div class="fw-light scroller pe-3"
+                                 style="max-width:100%; height: 500px; position: relative; overflow-y: scroll">
+                                <div class="" style="max-height: none;" tabindex="0">
+                                    <div class="" style="position: relative; top: 0px; left: 0px;">
+                                        <div class="title-sub">SPECIALTY COLD DRINKS</div>
+                                        <table width="100%">
+                                            <tbody>
+                                            <tr>
+                                                <td class="menu-tbl-title">ICE BLENDED</td>
+                                                <td class="menu-tbl-price" rowspan="2">1,350</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Iced coffee | Iced chocolate | Iced
+                                                    french vanilla | Iced almond mocha
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title">MILKSHAKES</td>
+                                                <td class="menu-tbl-price" rowspan="2">1,450</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">strawberry shake | chocolate shake |
+                                                    vanilla shake salted caramel shake | oreo and coffee shake
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title">SMOOTHIES</td>
+                                                <td class="menu-tbl-price" rowspan="2">1,450</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">banana, strawberry, dates, yoghurt,
+                                                    honey, dash of virgin coconut oil, touch of peanut butter and milk
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title">Tropical cooler</td>
+                                                <td class="menu-tbl-price" rowspan="2"> 1,350</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">spinach, avocado, lemon, gotukola, green
+                                                    apple, banana and mango
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title">FRESHLY SQUEEZED JUICES</td>
+                                                <td class="menu-tbl-price" rowspan="2">1,350</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Choose any three and create your own -
+                                                    pineapple | watermelon | carrot | beetroot and celery
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title">Orange Juice</td>
+                                                <td class="menu-tbl-price" rowspan="2">1,850</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title">HEALTHY BLENDS</td>
+                                                <td class="menu-tbl-price" rowspan="2">1,850</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Perfect blend for him – cucumber,
+                                                    spinach, king coconut, beetroot, honey, basil seed, ginger and lime
+                                                    juice
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title"></td>
+                                                <td class="menu-tbl-price" rowspan="2">1,850</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Perfect blend for her – soya milk,
+                                                    banana, mint, dates and king coconut
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title">MINERAL WATER</td>
+                                                <td class="menu-tbl-price" rowspan="2">550 | 950</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">bottled water 330 ml | sparkling water
+                                                    300 ml
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="title-sub">BAKERY AND PASTRY</div>
+                                        <table width="100%">
+                                            <tbody>
+                                            <tr>
+                                                <td class="menu-tbl-title">Croissants</td>
+                                                <td class="menu-tbl-price" rowspan="2">950 | 1,350 | 2,250</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Plain | Pain au chocolate | Almond</td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title">Cinnamon roll</td>
+                                                <td class="menu-tbl-price" rowspan="2"> 1,450</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">extra virgin olive oil, cardamom infused
+                                                    chocolate, cream cheese, honey and cinnamon spread
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title">Classic crepes</td>
+                                                <td class="menu-tbl-price" rowspan="2">1,750</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">roasted nuts, caramelized banana, toffee
+                                                    sauce, kithul jaggery crumble, berries, mint, tangy clotted cream
+                                                    and chocolate crumbs with strawberry sauce
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title">Bagel</td>
+                                                <td class="menu-tbl-price" rowspan="2">2,050</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">bacon, scrambled eggs, microgreens,
+                                                    lettuce, cream cheese and caramelized onion
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title">French toast</td>
+                                                <td class="menu-tbl-price" rowspan="2">1,850</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">passion fruit, caramelized banana, pure
+                                                    honey, “pani” apple compote with chocolate crumbs
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="title-sub">FRESH AND HEALTHY</div>
+                                        <table width="100%">
+                                            <tbody>
+                                            <tr>
+                                                <td class="menu-tbl-title">Breakfast sundae</td>
+                                                <td class="menu-tbl-price" rowspan="2">1,950</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Homemade granola, chia seeds, sunflower
+                                                    seeds, mixed berries, banana, plums, peach, yoghurt, Meemure honey
+                                                    and mint
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title"> Muesli</td>
+                                                <td class="menu-tbl-price" rowspan="2">2,200</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">oats, chia seeds, banana, pineapple,
+                                                    papaya, roasted walnuts, pear, raspberry compote and almond milk
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title">Fresh seasonal fruit platter</td>
+                                                <td class="menu-tbl-price" rowspan="2">1,300</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Seasonal cut fruits drizzled with honey
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title">Porridge</td>
+                                                <td class="menu-tbl-price" rowspan="2">1,850</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">brown rice flakes, barley, almonds,
+                                                    flaxseeds, cashew nuts, walnuts, drizzled cinnamon and honey served
+                                                    with poached pear
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="title-sub">TEA</div>
+                                        <table width="100%">
+                                            <tbody>
+                                            <tr>
+                                                <td class="menu-tbl-title"></td>
+                                                <td class="menu-tbl-price" rowspan="2">700</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">lack – English breakfast | Earl Grey |
+                                                    Ceylon Nuwara Eliya | Ceylon lemongrass | Ceylon spice chai
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title"></td>
+                                                <td class="menu-tbl-price" rowspan="2">700</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Green – jade | emerald sencha | Marrakech
+                                                    mint | jasmine | rose oolong
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title"></td>
+                                                <td class="menu-tbl-price" rowspan="2">700</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Tisanes – lemongrass and ginger twist |
+                                                    ruby red delight | summer fields | chamomile | peppermint
+                                                </td>
+                                            </tr>
+
+
+                                            </tbody>
+                                        </table>
+
+
+                                        <div class="title-sub">COFFEE</div>
+
+                                        <table width="100%">
+                                            <tbody>
+                                            <tr>
+                                                <td class="menu-tbl-title"></td>
+                                                <td class="menu-tbl-price" rowspan="2">800</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Flat white | Long black | Double espresso
+                                                    |Espresso
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title"></td>
+                                                <td class="menu-tbl-price" rowspan="2">900</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Latte I Cappuccino</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title"></td>
+                                                <td class="menu-tbl-price" rowspan="2">1,450</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Latte "di lusso"- caramel, vanilla,
+                                                    hazelnut, amaretto
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title"></td>
+                                                <td class="menu-tbl-price" rowspan="2">2,450</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Caffé con liquore - baileys or kahlua
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title"></td>
+                                                <td class="menu-tbl-price" rowspan="2">1,850</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Hot chocolate or mocha</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title"></td>
+                                                <td class="menu-tbl-price" rowspan="2">850</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Affogato - scoop of vanilla ice cream
+                                                    topped with espresso
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title">Spirulina and go (muesli)</td>
+                                                <td class="menu-tbl-price" rowspan="2">1,550</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">– oats, chia seeds, spirulina, banana,
+                                                    pineapple, papaya, roasted walnuts, royal apple, raspberry compote
+                                                    and almond milk.
+                                                </td>
+                                            </tr>
+
+
+                                            </tbody>
+                                        </table>
+
+
+                                        <div class="title-sub">EGGS</div>
+
+                                        <table width="100%">
+                                            <tbody>
+                                            <tr>
+                                                <td class="menu-tbl-title">Two eggs any style</td>
+                                                <td class="menu-tbl-price" rowspan="2">1,650</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Toast, butter, condiments and homemade
+                                                    orange marmalade
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title">Fluffy eggs</td>
+                                                <td class="menu-tbl-price" rowspan="2">1,850</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Sscrambled eggs with truffle oil served
+                                                    on sourdough toast, avocado, sweet balsamic drizzle and grilled
+                                                    tomato
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title">Omelette</td>
+                                                <td class="menu-tbl-price" rowspan="2">1,650</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Whites or golden yolks choose smoked
+                                                    mozzarella | blue cheese | mature cheddar | mushrooms | shallots |
+                                                    spinach | bell peppers | tomato | bacon | sausages | salmon |
+                                                    grilled chicken
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title">Benni</td>
+                                                <td class="menu-tbl-price" rowspan="2">2,050</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Classic or Florentine in toasted English
+                                                    muffin with capers, pickled shallots, paprika flavoured hollandaise
+                                                    sauce
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title"></td>
+                                                <td class="menu-tbl-price" rowspan="2">1150</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">*add smoked salmon</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title">Crab cake benni</td>
+                                                <td class="menu-tbl-price" rowspan="2">2,350</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Two fresh Mannar crab patties served on
+                                                    toasted English muffin with poached eggs, fresh avocado salsa, mango
+                                                    chutney
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title">Dukkah crusted crispy egg</td>
+                                                <td class="menu-tbl-price" rowspan="2">2,150</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">broccoli, wilted spinach puree and
+                                                    grilled mushrooms on toasted English muffin
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title">English roast</td>
+                                                <td class="menu-tbl-price" rowspan="2">2,850</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Fried eggs, sausages, bacon, baked beans,
+                                                    mushrooms, onion rings, grilled tomatoes, hash brown, mayo mustard
+                                                    cream with chopped parsley, sprinkled paprika and grilled oregano
+                                                    bread
+                                                </td>
+                                            </tr>
+
+
+                                            </tbody>
+                                        </table>
+
+
+                                        <div class="title-sub">ADD ONS</div>
+
+                                        <table width="100%">
+                                            <tbody>
+                                            <tr>
+                                                <td class="menu-tbl-title"></td>
+                                                <td class="menu-tbl-price" rowspan="2">450</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Hash brown</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title"></td>
+                                                <td class="menu-tbl-price" rowspan="2">750</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Sausage (chicken or pork)</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title"></td>
+                                                <td class="menu-tbl-price" rowspan="2">1,150</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Smoked salmon</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title"></td>
+                                                <td class="menu-tbl-price" rowspan="2">500</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Egg</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title"></td>
+                                                <td class="menu-tbl-price" rowspan="2">750</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">Bacon</td>
+                                            </tr>
+
+
+                                            </tbody>
+                                        </table>
+
+
+                                        <div class="title-sub">SRILANKAN BREAKFAST</div>
+
+                                        <table width="100%">
+                                            <tbody>
+                                            <tr>
+                                                <td class="menu-tbl-title">Kiribath red rice</td>
+                                                <td class="menu-tbl-price" rowspan="2">1,850</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">milk rice with fish curry or chicken
+                                                    curry | dhal | Maldive fish lunu miris
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title">Pol roti (4 pieces)</td>
+                                                <td class="menu-tbl-price" rowspan="2">1,850</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">coconut roti with fish, chicken or black
+                                                    pork curry | dhal | Maldive fish lunu miris
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title">Kurrakkan pittu</td>
+                                                <td class="menu-tbl-price" rowspan="2">1,650</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">kurakkan and rice flour pittu with egg
+                                                    and potato white curry, fish red curry with tempered dhal and
+                                                    cocount milk ( preparation time 20 minutes)
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title">Roast paan (3 pieces)</td>
+                                                <td class="menu-tbl-price" rowspan="2">1,850</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">choose any one from fish curry | chicken
+                                                    curry | black pork curry
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-title"></td>
+                                                <td class="menu-tbl-price" rowspan="2"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="menu-tbl-sub-title">All prices are in Sri Lankan Rupees and
+                                                    are subject to a 10% service charge and applicable government taxes.
+                                                </td>
+                                            </tr>
+
+
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                    <div class="mCSB_scrollTools mCSB_2_scrollbar mCS-light mCSB_scrollTools_vertical"
+                                         id="mCSB_2_scrollbar_vertical"
+                                         style="display: block;">
+                                        <div class="mCSB_draggerContainer">
+                                            <div class="mCSB_dragger" id="mCSB_2_dragger_vertical"
+                                                 oncontextmenu="return false;"
+                                                 style="position: absolute; min-height: 30px; top: 0px; display: block; height: 52px; max-height: 437px;">
+                                                <div class="mCSB_dragger_bar" style="line-height: 30px;"></div>
+                                            </div>
+                                            <div class="mCSB_draggerRail"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div aria-labelledby="lunch-tab" class="tab-pane fade" id="lunch-tab-pane" role="tabpanel"
+                         tabindex="0">...
+                    </div>
+                    <div aria-labelledby="dinner-tab" class="tab-pane fade" id="dinner-tab-pane" role="tabpanel"
+                         tabindex="0">...
+                    </div>
+                    <div aria-labelledby="dessert-tab" class="tab-pane fade" id="dessert-tab-pane" role="tabpanel"
+                         tabindex="0">...
+                    </div>
+                    <div aria-labelledby="tea-tab" class="tab-pane fade" id="tea-tab-pane" role="tabpanel"
+                         tabindex="0">...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<!-- FOOTER -->
+<footer class="text-center text-lg-start"
+        style="background: url('assets/img/footer-bg.jpg') no-repeat center center; background-size: cover;">
+    <!-- SOCIAL MEDIA -->
+    <section class="d-flex justify-content-between p-4 text-white">
+        <div class="me-5 fw-light">
+            <span>Get connected with us on social networks:</span>
+        </div>
+        <div class="d-flex flex-row align-items-center">
+            <a class="text-white fs-5 me-4" href="">
+                <i class="bi bi-facebook"></i>
+            </a>
+            <a class="text-white fs-5 me-4" href="">
+                <i class="bi bi-instagram"></i>
+            </a>
+            <a class="text-white fs-5 me-4" href="">
+                <i class="bi bi-tiktok"></i>
+            </a>
+        </div>
+    </section>
+    <!-- CONTACT  -->
+    <section id="contact-us">
+        <div class="container text-center text-md-start mt-5 mb-5">
+            <div class="row mt-3 fw-light" style="color: #ccc;">
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <h6 class="text-uppercase fw-bold">Features</h6>
+                    <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                        style="width: 60px; background-color: #828282; height: 2px"/>
+                    <p><i class="bi bi-phone"></i> Convenient Online Reservations</p>
+                    <p><i class="bi bi-car-front"></i> Delivery Services</p>
+                    <p><i class="bi bi-percent"></i> Special Offers</p>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <!-- LINKS -->
+                    <h6 class="text-uppercase fw-bold">Contact</h6>
+                    <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                        style="width: 60px; background-color: #828282; height: 2px"/>
+                    <p><i class="bi bi-geo-alt-fill"></i> Galle, Sri Lanka | Colombo, Sri Lanka</p>
+                    <p><i class="bi bi-telephone-fill"></i> +94 91 520 6803 | +94 11 250 3068</p>
+                    <p><i class="bi bi-envelope-fill"></i> abcrestuarant@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- COPYRIGHT -->
+    <div class="text-center fw-light p-3" style="font-size: 13px; color: #ccc;">
+        Copyright &copy; 2024. All rights reserved | Designed & Developed by Jithmi Wannakukorala
+    </div>
+</footer>
+<script crossorigin="anonymous"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+        src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</body>
+</html>

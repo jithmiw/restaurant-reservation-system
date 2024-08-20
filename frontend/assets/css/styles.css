@@ -1,0 +1,29 @@
+/*MENU SECTION*/
+.nav-link, .nav-link:hover {
+    color: white;
+}
+
+.scroller {
+    scrollbar-color: #fff #141414;
+}
+
+.title-sub {
+    width: auto;
+    height: auto;
+    float: left;
+    font-size: 22px;
+    text-transform: uppercase;
+    color: #ccc;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #383838;
+    margin: 20px 0 10px 0;
+}
+
+table tr td.menu-tbl-title {
+    text-transform: uppercase;
+}
+
+table tr td.menu-tbl-price {
+    text-align: right;
+    font-size: 20px;
+}
