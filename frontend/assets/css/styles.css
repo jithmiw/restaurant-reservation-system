@@ -6,7 +6,9 @@
 .scroller {
     scrollbar-color: #fff #141414;
 }
-
+td {
+    padding-right: 25px;
+}
 .title-sub {
     width: auto;
     height: auto;
