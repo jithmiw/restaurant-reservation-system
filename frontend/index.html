@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="assets/img/favicon.png" rel="icon">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Jithmi Wannakukorala" name="author">
@@ -59,7 +59,8 @@
                         </a>
                     </li>
                     <!-- Reservations trigger modal -->
-                    <button class="btn btn-outline-light fw-bold" data-bs-target="#reservation-modal" data-bs-toggle="modal"
+                    <button class="btn btn-outline-light fw-bold" data-bs-target="#reservation-modal"
+                            data-bs-toggle="modal"
                             type="button">
                         RESERVATIONS
                     </button>
@@ -126,24 +127,25 @@
                     <form id="customerForm">
                         <div class="mb-3">
                             <label class="form-label" for="inputName">Full Name</label>
-                            <input class="form-control" id="inputName" name="customer_name" type="text" required>
+                            <input class="form-control" id="inputName" name="customer_name" required type="text">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="inputContact">Mobile No</label>
-                            <input class="form-control" id="inputContact" name="contact" type="text" required>
+                            <input class="form-control" id="inputContact" name="contact" required type="text">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="inputEmail">Email</label>
-                            <input class="form-control" id="inputEmail" name="email" type="email" required>
+                            <input class="form-control" id="inputEmail" name="email" required type="email">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="inputUsername">Username</label>
-                            <input class="form-control" id="inputUsername" name="username" type="text" required>
+                            <input class="form-control" id="inputUsername" name="username" required type="text">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="inputPassword">Password</label>
                             <div class="d-flex flex-row align-items-center">
-                                <input class="form-control me-2" id="inputPassword" name="password" type="password" required>
+                                <input class="form-control me-2" id="inputPassword" name="password" required
+                                       type="password">
                                 <i class="bi bi-eye-slash" id="toggleSignupPassword" style="cursor: pointer"></i>
                             </div>
                         </div>
@@ -159,49 +161,98 @@
 <main>
     <!--HOME SECTION-->
     <section style="margin-top: 100px;">
-        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel slide" data-bs-ride="carousel" id="carouselExampleAutoplaying">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="assets/img/header-img-1.jpg" class="d-block w-100" alt="…">
+                    <img alt="…" class="d-block w-100" src="assets/img/header-img-1.jpg">
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/img/header-img-2.jpg" class="d-block w-100" alt="…">
+                    <img alt="…" class="d-block w-100" src="assets/img/header-img-2.jpg">
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/img/header-img-3.jpg" class="d-block w-100" alt="…">
+                    <img alt="…" class="d-block w-100" src="assets/img/header-img-3.jpg">
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/img/header-img-4.jpg" class="d-block w-100" alt="…">
+                    <img alt="…" class="d-block w-100" src="assets/img/header-img-4.jpg">
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/img/header-img-5.jpg" class="d-block w-100" alt="…">
+                    <img alt="…" class="d-block w-100" src="assets/img/header-img-5.jpg">
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleAutoplaying"
+                    type="button">
+                <span aria-hidden="true" class="carousel-control-prev-icon"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleAutoplaying"
+                    type="button">
+                <span aria-hidden="true" class="carousel-control-next-icon"></span>
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
     </section>
     <!--ABOUT SECTION-->
-    <section id="about">
+    <section id="about" style="padding-top: 60px;">
         <div style="background: url('assets/img/about-bg.jpg') no-repeat center center; background-size: cover;">
             <div class="container pt-5 px-4" style="padding-bottom: 350px;">
                 <p class="fs-1 text-white fw-bold pb-4">ABOUT US</p>
-                <p class="text-white fw-light">At ABC Restaurant, we believe in bringing together the best local ingredients with the skills of our talented chefs to create meals that capture the true flavors of Sri Lanka. Since our establishment, we have focused on delivering a dining experience that is both authentic and innovative.</p>
-                <p class="text-white fw-light">Our chefs carefully select ingredients from trusted local farmers and suppliers, ensuring that every dish is made with fresh, high-quality produce. Whether it’s a traditional Sri Lankan dish or a modern twist on a classic, we take pride in offering a menu that’s exciting and full of flavor.</p>
-                <p class="text-white fw-light">At ABC Restaurant, we are constantly evolving. Our menu changes regularly to showcase the freshest ingredients of the season, and our team is always experimenting with new ideas to keep your dining experience fresh and enjoyable.</p>
-                <p class="text-white fw-light">Join us for a meal where tradition meets creativity, and where every bite is a celebration of our commitment to quality and taste.</p>
+                <p class="text-white fw-light">At ABC Restaurant, we believe in bringing together the best local
+                    ingredients with the skills of our talented chefs to create meals that capture the true flavors of
+                    Sri Lanka. Since our establishment, we have focused on delivering a dining experience that is both
+                    authentic and innovative.</p>
+                <p class="text-white fw-light">Our chefs carefully select ingredients from trusted local farmers and
+                    suppliers, ensuring that every dish is made with fresh, high-quality produce. Whether it’s a
+                    traditional Sri Lankan dish or a modern twist on a classic, we take pride in offering a menu that’s
+                    exciting and full of flavor.</p>
+                <p class="text-white fw-light">At ABC Restaurant, we are constantly evolving. Our menu changes regularly
+                    to showcase the freshest ingredients of the season, and our team is always experimenting with new
+                    ideas to keep your dining experience fresh and enjoyable.</p>
+                <p class="text-white fw-light">Join us for a meal where tradition meets creativity, and where every bite
+                    is a celebration of our commitment to quality and taste.</p>
             </div>
+        </div>
+    </section>
+    <!--OFFERS SECTION-->
+    <section id="offers" style="padding-top: 60px;">
+        <div>
+            <div class="container pt-5 px-4 text-white fw-light pb-5">
+                <p class="fs-1 fw-bold pb-4 px-4">OFFERS</p>
+                <div class="d-flex flex-md-row flex-column mt-4 mb-4">
+                    <!------ OFFER ONE ------>
+                    <div class="d-flex flex-md-row flex-column mb-5">
+                        <img alt="img-1" class="col-md-3 col-lg-4 col-xs-12 px-4"
+                             src="assets/img/weekend-brunch-offer-bg.jpg">
+                        <div class="col-md-9 col-lg-8 col-xs-12 px-4 py-5">
+                            <h5 class="pb-4 text-start">BRUNCH WEEKENDS</h5>
+                            <p>Indulge in our delectable range of gourmet breakfast dishes from our
+                                signature benni to delicious bagel, scrumptious French toast, healthy blends and
+                                more!</p>
+                            <p>Our menu includes the perfect sweet & savoury treats to be enjoyed with great company in
+                                a cozy setting, be it in our restaurant overlooking the pool or quaint courtyard.</p>
+                            <p>Available every Saturday & Sunday from 7.00 am to 3.00 pm | Kids under the age of 6 dine
+                                free | Free flow of selected non-alcoholic beverages | Live music on Saturdays</p>
+                        </div>
+                    </div>
+                </div>
+                <!------ OFFER TWO ------>
+                <div class="d-flex flex-md-row flex-column mb-5">
+                    <img alt="img-1" class="col-md-3 col-lg-4 col-xs-12 px-4" src="assets/img/happy-hour-bg.jpg">
+                    <div class="col-md-9 col-lg-8 col-xs-12 px-4 py-5">
+                        <h5 class="pb-4 text-start">HAPPY HOUR</h5>
+                        <p>Pamper yourself with our Happy Hour deals that allow you to enjoy 20%
+                            discount on all desserts.</p>
+                        <p>Happy hours are Everyday 6.00pm – 8.00pm</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
         </div>
     </section>
 </main>
 <!-- FOOTER -->
-<footer class="text-center text-lg-start" style="background: url('assets/img/footer-bg.jpg') no-repeat center center; background-size: cover;">
+<footer class="text-center text-lg-start"
+        style="background: url('assets/img/footer-bg.jpg') no-repeat center center; background-size: cover;">
     <!-- SOCIAL MEDIA -->
     <section class="d-flex justify-content-between p-4 text-white">
         <div class="me-5 fw-light">
@@ -231,7 +282,7 @@
                     <p><i class="bi bi-car-front"></i> Delivery Services</p>
                     <p><i class="bi bi-percent"></i> Special Offers</p>
                 </div>
-                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4" >
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                     <!-- LINKS -->
                     <h6 class="text-uppercase fw-bold">Contact</h6>
                     <hr class="mb-4 mt-0 d-inline-block mx-auto"
@@ -252,6 +303,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script crossorigin="anonymous"
-        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+        src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </body>
 </html>
