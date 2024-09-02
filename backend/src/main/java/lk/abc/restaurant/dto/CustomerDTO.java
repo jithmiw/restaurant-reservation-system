@@ -1,11 +1,12 @@
 package lk.abc.restaurant.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,5 +21,6 @@ public class CustomerDTO {
 
     private String username;
     private String password;
-    private Date register_date;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate reg_date;
 }

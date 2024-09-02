@@ -29,6 +29,6 @@ public class Customer {
     @CreationTimestamp
     private LocalDate reg_date;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ReservationDetail> reservationDetails = new ArrayList<>();
+//    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<ReservationDetail> reservationDetails = new ArrayList<>();
 }
