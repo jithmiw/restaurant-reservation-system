@@ -1,5 +1,27 @@
 let baseUrl = "http://localhost:8080/abc_restaurant/";
 
+$(document).ready(function () {
+    $("#signUpButton").click(function () {
+        $.ajax({
+            url: baseUrl + "customer/generateCustomerId",
+            method: "get",
+            dataType: "json",
+            success: function (res) {
+                if (res.status === 200 && res.data) {
+                    $('#customerId').val(res.data);
+                } else {
+                    console.error("Failed to generate customer ID:", res.message);
+                    alert("Failed to generate customer ID. Please try again.");
+                }
+            },
+            error: function (error) {
+                console.error("Error fetching customer ID:", error);
+                alert("Error fetching customer ID. Please try again.");
+            }
+        });
+    });
+});
+
 // validations
 
 // regular expressions
@@ -213,9 +235,9 @@ function loginAdmin() {
 }
 
 function openCustomerHome() {
-    // localStorage.setItem("customerIdValue", $('#inputCustomerId').val());
-    // window.location.href = "customer.html";
-    // disableBackButton();
+    localStorage.setItem("customerIdValue", $('#customerId').val());
+    window.location.href = "customer.html";
+    disableBackButton();
 }
 
 function clearSignUpForm() {

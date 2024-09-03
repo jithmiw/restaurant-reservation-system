@@ -66,7 +66,7 @@
         </div>
     </nav>
     <!-- Login Modal -->
-    <div aria-hidden="true" aria-labelledby="staticBackdropLabel1" class="modal fade" data-bs-backdrop="static"
+    <div aria-hidden="true" aria-labelledby="staticBackdropLabel1" class="modal fade fw-light" data-bs-backdrop="static"
          data-bs-keyboard="false"
          id="staticBackdrop1" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
@@ -74,8 +74,8 @@
                 <div class="modal-header">
                     <div class="d-flex flex-column">
                         <h1 class="modal-title fs-5 fw-bold" id="staticBackdropLabel1">Login</h1>
-                        <span style="color: #aaaaaa">Don't have an account?
-                            <button class="btn btn-link text-decoration-none pt-0" data-bs-target="#signup-modal"
+                        <span style="color: #797979">Don't have an account?
+                            <button class="btn btn-link text-decoration-none pt-0 fw-light" id="signUpButton" data-bs-target="#signup-modal"
                                     data-bs-toggle="modal">Sign Up</button>
                         </span>
                     </div>
@@ -96,7 +96,7 @@
                             </div>
                         </div>
                         <div class="modal-footer col-12 me-auto pe-0">
-                            <button class="btn btn-link text-decoration-none pt-0">Forgot Password?</button>
+                            <button class="btn btn-link text-decoration-none pt-0 fw-light">Forgot Password?</button>
                             <button class="btn btn-dark me-0" id="loginUser" type="button">LOGIN</button>
                         </div>
                     </form>
@@ -105,7 +105,7 @@
         </div>
     </div>
     <!-- Sign Up Modal -->
-    <div aria-hidden="true" aria-labelledby="staticBackdropLabel" class="modal fade" data-bs-backdrop="static"
+    <div aria-hidden="true" aria-labelledby="staticBackdropLabel" class="modal fade fw-light" data-bs-backdrop="static"
          data-bs-keyboard="false"
          id="signup-modal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
@@ -113,7 +113,7 @@
                 <div class="modal-header">
                     <div class="d-flex flex-column">
                         <h1 class="modal-title fs-5 fw-bold" id="staticBackdropLabel">Sign Up</h1>
-                        <span style="color: #aaaaaa">Already have an account?<button
+                        <span style="color: #797979">Already have an account?<button
                                 class="btn btn-link text-decoration-none pt-0" data-bs-target="#staticBackdrop1"
                                 data-bs-toggle="modal">Login</button></span>
                     </div>
@@ -122,13 +122,17 @@
                 <div class="modal-body">
                     <!--SIGN UP FORM-->
                     <form id="customerForm">
+                        <div class="mb-3" style="display: none">
+                            <label class="form-label" for="customerId">Customer Id</label>
+                            <input class="form-control" id="customerId" name="customer_id" readonly type="text">
+                        </div>
                         <div class="mb-3">
                             <label class="form-label" for="inputName">Full Name</label>
                             <input class="form-control" id="inputName" name="customer_name" required type="text">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="inputContactNo">Mobile No</label>
-                            <input class="form-control" id="inputContactNo" name="contact" required type="text">
+                            <input class="form-control" id="inputContactNo" name="contact_no" required type="text">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="inputEmail">Email</label>
