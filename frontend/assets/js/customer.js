@@ -1,4 +1,4 @@
-let baseUrl = "http://localhost:8080/easycar-rental/";
+let baseUrl = "http://localhost:8080/abc_restaurant/";
 
 $(document).ready(function () {
     $("#home").click();
@@ -93,3 +93,23 @@ $('#updateCustomer').click(function () {
         }
     });
 });
+
+// log out
+$("#logOut").click(function () {
+    if (confirm('Are sure you want to logout?')) {
+        window.location.href = "index.html";
+        disableBackButton();
+    }
+});
+
+function disableBackButton() {
+    function disableBack() {
+        window.history.forward()
+    }
+
+    window.onload = disableBack();
+    window.onpageshow = function (e) {
+        if (e.persisted)
+            disableBack();
+    }
+}
