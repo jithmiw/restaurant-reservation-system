@@ -46,3 +46,7 @@ table tr td.menu-tbl-price {
     text-align: right;
     font-size: 20px;
 }
+
+.table {
+    --bs-table-bg: none;
+}
