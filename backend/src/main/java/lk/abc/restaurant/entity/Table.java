@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,6 +21,7 @@ public class Table {
     private String table_type;
     private int seating_capacity;
     private String location;
+    private BigDecimal reservation_fee;
     private String status;
 
 //    @OneToMany(mappedBy = "table", cascade = CascadeType.ALL, orphanRemoval = true)

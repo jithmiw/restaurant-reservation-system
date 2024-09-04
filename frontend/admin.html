@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="assets/css/styles.css" rel="stylesheet">
+    <link href="assets/img/favicon.png" rel="icon">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Jithmi Wannakukorala" name="author">
+    <meta content="Restaurant Reservation System" name="description">
+    <meta content="Restaurant Reservation System, Online Restaurant Booking, ABC Restaurant, Restaurant Reservations, Sri Lanka Dining, Restaurant Services, Table Booking, Food Delivery, Dine-In Reservations, Restaurant Website, Hospitality Services, Online Food Ordering, Restaurant Management System, Sri Lanka Restaurant, ABC Restaurant Reservations"
+          name="keywords">
+
+    <title>ABC Restaurant</title>
+</head>
+<body style="background-color: #0a0908">
+<header>
+    <!--NAVIGATION BAR-->
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg shadow" style="background-color: #0a0908">
+        <div class="container-fluid">
+            <a class="navbar-brand text-black fw-bolder">
+                <img alt="Logo" class="d-inline-block align-text-top" height="68" src="assets/img/logo.png"
+                     width="224">
+            </a>
+            <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                    class="navbar-toggler bg-black" data-bs-target="#navbarSupportedContent"
+                    data-bs-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <button class="btn btn-link text-decoration-none nav-link active fw-light"
+                                id="home"
+                                type="button">DASHBOARD
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-link text-decoration-none nav-link active fw-light"
+                                id="manage-reservations"
+                                type="button">RESERVATIONS
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-link text-decoration-none nav-link active fw-light"
+                                id="manage-tables"
+                                type="button">TABLES
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-link text-decoration-none nav-link active fw-light"
+                                id="view-customers"
+                                type="button">CUSTOMERS
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-link text-decoration-none nav-link active fw-light"
+                                id="manage-staff"
+                                type="button">STAFF
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-link text-decoration-none nav-link active fw-light"
+                                id="view-payments"
+                                type="button">PAYMENTS
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-light fw-bold" id="logOut" type="button">
+                            LOGOUT
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    <!--HOME SECTION-->
+    <section id="dashboard">
+        <div class="container mb-5 pt-4" style="margin-top: 100px;">
+            <div class="d-flex flex-column flex-sm-row">
+                <div class="bg-white ms-sm-2 me-sm-2 mb-3 shadow" style="width: 100%;">
+                    <div class="navbar navbar-expand-lg d-flex flex-column flex-sm-row justify-content-between"
+                         style="background-color: #e3e3e3">
+                        <div class="navbar-brand ms-2 fs-4">REGISTERED USERS</div>
+                    </div>
+                    <div class="d-flex flex-column align-items-center mt-4 mb-4">
+                        <div class="fs-3 text-center" id="registeredUsers">0</div>
+                    </div>
+                </div>
+                <div class="bg-white ms-sm-2 me-sm-2 mb-3 shadow" style="width: 100%;">
+                    <div class="navbar navbar-expand-lg d-flex flex-column flex-sm-row justify-content-between"
+                         style="background-color: #e3e3e3">
+                        <div class="navbar-brand ms-2 fs-4">TODAY BOOKINGS</div>
+                    </div>
+                    <div class="d-flex flex-column align-items-center mt-4 mb-4">
+                        <div class="fs-3 text-center" id="todayBookings">0</div>
+                    </div>
+                </div>
+                <div class="bg-white ms-sm-2 me-sm-2 mb-3 shadow" style="width: 100%;">
+                    <div class="navbar navbar-expand-lg d-flex flex-column flex-sm-row justify-content-between"
+                         style="background-color: #e3e3e3">
+                        <div class="navbar-brand ms-2 fs-4">AVAILABLE TABLES</div>
+                    </div>
+                    <div class="d-flex flex-column align-items-center mt-4 mb-4">
+                        <div class="fs-3 text-center" id="availableTables">0</div>
+                    </div>
+                </div>
+                <div class="bg-white ms-sm-2 me-sm-2 mb-3 shadow" style="width: 100%;">
+                    <div class="navbar navbar-expand-lg d-flex flex-column flex-sm-row justify-content-between"
+                         style="background-color: #e3e3e3;">
+                        <div class="navbar-brand ms-2 fs-4">RESERVED TABLES</div>
+                    </div>
+                    <div class="d-flex flex-column align-items-center mt-4 mb-4">
+                        <div class="fs-3 text-center" id="reservedTables">0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--INCOME SUMMARY-->
+        <div class="container mb-5 pt-4">
+            <div class="d-flex flex-column flex-sm-row">
+                <div class="bg-white ms-sm-2 me-sm-2 mb-3 shadow" style="width: 100%;">
+                    <div class="navbar navbar-expand-lg d-flex flex-column flex-sm-row justify-content-between"
+                         style="background-color: #e3e3e3">
+                        <div class="navbar-brand ms-2 fs-4">DAILY INCOME (RS.)</div>
+                    </div>
+                    <div class="d-flex flex-column align-items-center mt-4 mb-4">
+                        <div class="fs-3 text-center" id="dailyIncome">0</div>
+                    </div>
+                </div>
+                <div class="bg-white ms-sm-2 me-sm-2 mb-3 shadow" style="width: 100%;">
+                    <div class="navbar navbar-expand-lg d-flex flex-column flex-sm-row justify-content-between"
+                         style="background-color: #e3e3e3">
+                        <div class="navbar-brand ms-2 fs-4">WEEKLY INCOME (RS.)</div>
+                    </div>
+                    <div class="d-flex flex-column align-items-center mt-4 mb-4">
+                        <div class="fs-3 text-center" id="weeklyIncome">0</div>
+                    </div>
+                </div>
+                <div class="bg-white ms-sm-2 me-sm-2 mb-3 shadow" style="width: 100%;">
+                    <div class="navbar navbar-expand-lg d-flex flex-column flex-sm-row justify-content-between"
+                         style="background-color: #e3e3e3">
+                        <div class="navbar-brand ms-2 fs-4">MONTHLY INCOME (RS.)</div>
+                    </div>
+                    <div class="d-flex flex-column align-items-center mt-4 mb-4">
+                        <div class="fs-3 text-center" id="monthlyIncome">0</div>
+                    </div>
+                </div>
+                <div class="bg-white ms-sm-2 me-sm-2 mb-3 shadow" style="width: 100%;">
+                    <div class="navbar navbar-expand-lg d-flex flex-column flex-sm-row justify-content-between"
+                         style="background-color: #e3e3e3;">
+                        <div class="navbar-brand ms-2 fs-4">YEARLY INCOME (RS.)</div>
+                    </div>
+                    <div class="d-flex flex-column align-items-center mt-4 mb-4">
+                        <div class="fs-3 text-center" id="yearlyIncome">0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--RESERVATIONS SECTION-->
+    <section id="reservations">
+        <div class="container-fluid mt-5 mb-5 pt-4">
+            <div class="navbar navbar-expand-lg d-flex flex-column flex-sm-row justify-content-between"
+                 style="background-color: #e3e3e3">
+                <div class="fs-5 ms-2 d-flex flex-row">
+                    <div>Reservations</div>
+                    <div class="ms-2" id="reservation-status-hd"></div>
+                </div>
+                <form class="d-flex ms-2 me-2" role="search">
+                    <input aria-label="Search" class="form-control me-2" id="searchRequest" placeholder="Search"
+                           type="search">
+                    <button class="btn btn-outline-secondary" id="btnSearchRequest" type="button">Search</button>
+                </form>
+            </div>
+            <form class="row g-3 mt-0 me-0 ms-0 bg-white" id="reservationForm">
+                <div class="col-md-3">
+                    <label class="form-label">Reservation Id</label>
+                    <input class="form-control" id="reservation-id" readonly type="text">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Table Id</label>
+                    <input class="form-control" id="table-id" readonly type="text">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Customer Id</label>
+                    <input class="form-control" id="customer-id" readonly type="text">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Reservation Date</label>
+                    <input class="form-control" id="reservation-date" readonly type="Date">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Arrival Time</label>
+                    <input class="form-control" id="arrival-time" readonly type="Time">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Departure Time</label>
+                    <input class="form-control" id="depature-time" readonly type="Time">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">No of Guests</label>
+                    <input class="form-control" id="no-of-guests" readonly type="Time">
+                </div>
+<!--                <div class="col-md-3">-->
+<!--                    <label class="form-label">Staff Id</label>-->
+<!--                    <select class="form-select" id="selectStaffId"></select>-->
+<!--                </div>-->
+                <div class="col-md-3">
+                    <label class="form-label">Reserved Date</label>
+                    <input class="form-control" id="reserved-date" readonly type="Date">
+                </div>
+                <div class="d-flex flex-column flex-sm-row justify-content-center mt-4 mb-5">
+<!--                    <button class="btn btn-outline-secondary mt-1 mb-1 me-sm-2 ms-sm-2" id="changeStaff" type="button">-->
+<!--                        CHANGE STAFF-->
+<!--                    </button>-->
+                    <!-- Calculate Payment Button trigger modal -->
+                    <button class="btn btn-outline-secondary mt-1 mb-1 me-sm-2 ms-sm-2" data-bs-target="#calculatePaymentModal"
+                            data-bs-toggle="modal" id="calculatePayment" type="button">
+                        CALCULATE PAYMENT
+                    </button>
+                </div>
+            </form>
+            <div class="d-flex flex-column flex-sm-row justify-content-center mt-5 mb-3">
+                <button class="btn btn-outline-light mt-1 mb-1 me-sm-2 ms-sm-2" id="btnReserved" style="border-radius: 50px"
+                        type="button">Reserved
+                </button>
+                <button class="btn btn-outline-light mt-1 mb-1 me-sm-2 ms-sm-2" id="btnCancelled" style="border-radius: 50px"
+                        type="button">Cancelled
+                </button>
+                <button class="btn btn-outline-light mt-1 mb-1 me-sm-2 ms-sm-2" id="btnClosed" style="border-radius: 50px"
+                        type="button">Closed
+                </button>
+            </div>
+            <table class="table table-bordered table-hover mt-4">
+                <thead class="bg-dark">
+                <tr>
+                    <th class="text-white" scope="col">Reservation Id</th>
+                    <th class="text-white" scope="col">Customer Id</th>
+                    <th class="text-white" scope="col">Table Id</th>
+                    <th class="text-white" scope="col">Reservation Date</th>
+                    <th class="text-white" scope="col">Arrival Time</th>
+                    <th class="text-white" scope="col">Departure Time</th>
+                    <th class="text-white" scope="col">No of Guests</th>
+                    <th class="text-white" scope="col">Reservation Status</th>
+                    <th class="text-white" scope="col">Payment Status</th>
+                    <th class="text-white" scope="col">Reserved Date</th>
+                </tr>
+                </thead>
+                <tbody class="table-light" id="tblReservations" style="overflow-y:auto;">
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <!--TABLES SECTION-->
+    <section id="tables">
+        <div class="container-fluid mt-5 mb-5 pt-4">
+            <div class="navbar navbar-expand-lg d-flex flex-column flex-sm-row justify-content-between"
+                 style="background-color: #e3e3e3">
+                <div class="navbar-brand ms-2">Tables</div>
+                <form class="d-flex ms-2 me-2" role="search">
+                    <input aria-label="Search" class="form-control me-2" id="searchTable" placeholder="Search"
+                           type="search">
+                    <button class="btn btn-outline-secondary" id="btnSearchTable" type="button">Search</button>
+                </form>
+            </div>
+            <form class="row g-3 mt-0 me-0 ms-0 mb-5 bg-white" id="TableForm">
+                <div class="col-md-3">
+                    <label class="form-label" for="inputTableId">Table Id</label>
+                    <input class="form-control" id="inputTableId" name="table_id" type="text">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label" for="inputTableNo">Table No</label>
+                    <input class="form-control" id="inputTableNo" name="table_no" type="text">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label" for="inputType">Table Type</label>
+                    <select class="form-select" id="inputType" name="type">
+                        <option selected>Choose Type</option>
+                        <option>Standard</option>
+                        <option>Booth</option>
+                        <option>Round</option>
+                        <option>High-Top</option>
+                        <option>Outdoor</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label" for="inputCapacity">Seating Capacity</label>
+                    <input class="form-control" id="inputCapacity" name="capacity" type="number">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label" for="inputLocation">Location</label>
+                    <select class="form-select" id="inputLocation" name="type">
+                        <option selected>Choose Type</option>
+                        <option>Main Dining Area</option>
+                        <option>Outdoor Patio</option>
+                        <option>Window-side</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label" for="inputReservationFee">Reservation Fee(Rs.)</label>
+                    <input class="form-control" id="inputReservationFee" name="reservation_fee" type="number">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label" for="inputStatus">Available or Not Available?</label>
+                    <select class="form-select" id="inputStatus" name="status">
+                        <option value="0">Choose Available or Not Available?</option>
+                        <option value="1">Available</option>
+                        <option value="2">Not Available</option>
+                        <option value="3">Reserved</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label" for="inputTableImage">Table Image</label>
+                    <input class="form-control" id="inputTableImage" name="table_image" type="file">
+                </div>
+                <div class="d-flex flex-column flex-sm-row justify-content-center mt-4">
+                    <button class="btn btn-dark mt-1 mb-1 me-sm-2 ms-sm-2" id="saveTable" type="button">ADD</button>
+                    <button class="btn text-white mt-1 mb-1 me-sm-2 ms-sm-2" id="updateTable" style="background-color: #7f7f7f;"
+                            type="button">UPDATE
+                    </button>
+                    <button class="btn mt-1 mb-1 me-sm-2 ms-sm-2" id="deleteTable" style="background-color: #c2c2c2;" type="button">DELETE
+                    </button>
+                    <button class="btn mt-1 mb-1 me-sm-2 ms-sm-2" id="viewTables" style="background-color: #e7e7e7;" type="button">VIEW ALL TABLES</button>
+                </div>
+            </form>
+            <table class="table table-bordered table-hover mt-4">
+                <thead class="bg-dark">
+                <tr>
+                    <th class="text-white" scope="col">Table Id</th>
+                    <th class="text-white" scope="col">Table No</th>
+                    <th class="text-white" scope="col">Table Type</th>
+                    <th class="text-white" scope="col">Seating Capacity</th>
+                    <th class="text-white" scope="col">Location</th>
+                    <th class="text-white" scope="col">Reservation Fee(Rs.)</th>
+                    <th class="text-white" scope="col">Status</th>
+                </tr>
+                </thead>
+                <tbody class="table-light" id="tblTables" style="overflow-y:auto;">
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <!--CUSTOMERS SECTION-->
+    <section id="customers">
+        <div class="container-fluid mt-5 mb-5 pt-4">
+            <div class="navbar navbar-expand-lg d-flex flex-column flex-sm-row justify-content-between"
+                 style="background-color: #e3e3e3">
+                <div class="navbar-brand ms-2">Customers</div>
+                <form class="d-flex ms-2 me-2" role="search">
+                    <input aria-label="Search" class="form-control me-2" id="searchCustomer" placeholder="Search"
+                           type="search">
+                    <button class="btn btn-outline-secondary" id="btnSearchCustomer" type="button">Search</button>
+                </form>
+            </div>
+            <form class="row g-3 mt-0 me-0 ms-0 mb-5 bg-white">
+                <div class="col-md-3">
+                    <label class="form-label">Customer Id</label>
+                    <input class="form-control" id="cus-id" readonly type="text">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Customer Name</label>
+                    <input class="form-control" id="customer-name" readonly type="text">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Contact No</label>
+                    <input class="form-control" id="contact-no" readonly type="text">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Email</label>
+                    <input class="form-control" id="email" readonly type="email">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Registered Date</label>
+                    <input class="form-control" id="registered-date" readonly type="Date">
+                </div>
+            </form>
+            <table class="table table-bordered table-hover mt-4">
+                <thead class="bg-dark">
+                <tr>
+                    <th class="text-white" scope="col">Customer Id</th>
+                    <th class="text-white" scope="col">Customer Name</th>
+                    <th class="text-white" scope="col">Contact No</th>
+                    <th class="text-white" scope="col">Email</th>
+                    <th class="text-white" scope="col">Registered Date</th>
+                </tr>
+                </thead>
+                <tbody class="table-light" id="tblCustomers" style="overflow-y:auto;">
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <!--STAFF SECTION-->
+    <section id="staff">
+        <div class="container-fluid mt-5 mb-5 pt-4">
+            <div class="navbar navbar-expand-lg d-flex flex-column flex-sm-row justify-content-between"
+                 style="background-color: #e3e3e3">
+                <div class="navbar-brand ms-2">Staff</div>
+                <form class="d-flex ms-2 me-2" role="search">
+                    <input aria-label="Search" class="form-control me-2" id="searchStaff" placeholder="Search"
+                           type="search">
+                    <button class="btn btn-outline-secondary" id="btnSearchStaff" type="button">Search</button>
+                </form>
+            </div>
+            <form class="row g-3 mt-0 me-0 ms-0 bg-white" id="staffForm">
+                <div class="col-md-3">
+                    <label class="form-label">Staff Id</label>
+                    <input class="form-control" id="staff-id" readonly type="text">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label" for="inputName">Name</label>
+                    <input class="form-control" id="inputName" name="member_name" type="text">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label" for="inputContactNo">Contact No</label>
+                    <input class="form-control" id="inputContactNo" name="contact_no" type="text">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label" for="inputEmail">Email</label>
+                    <input class="form-control" id="inputEmail" name="email" type="email">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label" for="inputUsername">Username</label>
+                    <input class="form-control" id="inputUsername" name="username" type="text">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label" for="inputPassword">Password</label>
+                    <div class="d-flex flex-row align-items-center">
+                        <input class="form-control me-2" id="inputPassword" name="password" type="password">
+                        <i class="bi bi-eye-slash" id="toggleSignupPassword" style="cursor: pointer"></i>
+                    </div>
+                </div>
+                <div class="col-md-3 d-none">
+                    <label class="form-label" for="regDate">Registered Date</label>
+                    <input class="form-control" id="regDate" type="date">
+                </div>
+                <div class="d-flex flex-column flex-sm-row justify-content-center mt-5 mb-3">
+                    <button class="btn btn-dark mt-1 mb-1 me-sm-2 ms-sm-2" id="saveStaff" type="button">ADD</button>
+                    <button class="btn text-white mt-1 mb-1 me-sm-2 ms-sm-2" id="updateStaff" style="background-color: #7f7f7f;"
+                            type="button">UPDATE
+                    </button>
+                    <button class="btn mt-1 mb-1 me-sm-2 ms-sm-2" id="deleteStaff" style="background-color: #c2c2c2;"
+                            type="button">DELETE
+                    </button>
+                </div>
+            </form>
+            <table class="table table-bordered table-hover mt-4">
+                <thead class="bg-dark">
+                <tr>
+                    <th class="text-white" scope="col">Staff Id</th>
+                    <th class="text-white" scope="col">Member Name</th>
+                    <th class="text-white" scope="col">Contact No</th>
+                    <th class="text-white" scope="col">Email</th>
+                    <th class="text-white d-none" scope="col">Username</th>
+                    <th class="text-white d-none" scope="col">Password</th>
+                    <th class="text-white" scope="col">Registered Date</th>
+                </tr>
+                </thead>
+                <tbody class="table-light" id="tblStaff" style="overflow-y:auto;">
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <!--PAYMENTS SECTION-->
+    <section id="payments">
+        <div class="container-fluid mt-5 mb-5 pt-4">
+            <div class="navbar navbar-expand-lg d-flex flex-column flex-sm-row justify-content-between"
+                 style="background-color: #e3e3e3">
+                <div class="navbar-brand ms-2">Payments</div>
+                <form class="d-flex ms-2 me-2" role="search">
+                    <input aria-label="Search" class="form-control me-2" id="searchPayment" placeholder="Search"
+                           type="search">
+                    <button class="btn btn-outline-secondary" id="btnSearchPayment" type="button">Search</button>
+                </form>
+            </div>
+            <table class="table table-bordered table-hover mt-4">
+                <thead class="bg-dark">
+                <tr>
+                    <th class="text-white" scope="col">Payment Id</th>
+                    <th class="text-white" scope="col">Reservation Id</th>
+                    <th class="text-white" scope="col">Reservation Fee(Rs.)</th>
+<!--                    <th class="text-white" scope="col">Delivery Fee(Rs.)</th>-->
+                    <th class="text-white" scope="col">Total Payment(Rs.)</th>
+                    <th class="text-white" scope="col">Payment Date</th>
+                </tr>
+                </thead>
+                <tbody class="table-light" id="tblPayments" style="overflow-y:auto;">
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <!-- Calculate Payment Modal -->
+    <div aria-hidden="true" aria-labelledby="calculatePaymentModalLabel" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"
+         id="calculatePaymentModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="d-flex flex-column">
+                        <h1 class="modal-title fs-5 fw-bold" id="calculatePaymentModalLabel">Calculate Payment</h1>
+                    </div>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="row g-3" id="paymentForm">
+                        <div class="col-md-6">
+                            <label class="form-label" for="payment-id">Payment Id</label>
+                            <input class="form-control" id="payment-id" name="payment_id" readonly type="text">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="payment-reservation-id">Reservation Id</label>
+                            <input class="form-control" id="payment-reservation-id" name="reservation_id" readonly type="text">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="reservation-fee">Reservation Fee(Rs.)</label>
+                            <input class="form-control" id="reservation-fee" name="reservation_fee" readonly type="number">
+                        </div>
+<!--                        <div class="col-md-6">-->
+<!--                            <label class="form-label" for="delivery-fee">Delivery Fee(Rs.)</label>-->
+<!--                            <input class="form-control" id="delivery-fee" name="delivery_fee" readonly type="number">-->
+<!--                        </div>-->
+                        <div class="col-md-6">
+                            <label class="form-label" for="total-payment">Total Payment(Rs.)</label>
+                            <input class="form-control" id="total-payment" name="total_payment" readonly type="number">
+                        </div>
+                        <div class="modal-footer col-12 me-auto pe-2">
+                            <button class="btn btn-dark" id="btnPay" type="button">Pay</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script crossorigin="anonymous"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+        src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="./assets/js/admin.js"></script>
+<script src="./assets/js/util/validations.js"></script>
+</body>
+</html>
