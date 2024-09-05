@@ -32,6 +32,11 @@ public class TableController {
         return new ResponseUtil(200, "Table id: " + table_id + " table deleted successfully", null);
     }
 
+    @GetMapping(path = "/generateTableId")
+    public ResponseUtil generateTableId() {
+        return new ResponseUtil(200, "Table id generated", tableService.generateNewTableId());
+    }
+
     @GetMapping(params = {"table_id"})
     public ResponseUtil findTableByTableId(@RequestParam String table_id) {
         return new ResponseUtil(200, "Loaded successfully", tableService.findTableByTableId(table_id));

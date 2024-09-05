@@ -63,6 +63,17 @@ public class StaffServiceImpl implements StaffService {
     }
 
     @Override
+    public String generateNewStaffId() {
+        String staff_id = "";
+        staff_id = staffRepo.getLastStaffId();
+        if (staff_id != null) {
+            int newStaffId = Integer.parseInt(staff_id.replace("SID-", "")) + 1;
+            return String.format("SID-%03d", newStaffId);
+        }
+        return "SID-001";
+    }
+
+    @Override
     public StaffDTO getStaffByStaffId(String staff_id) {
         Staff staff = staffRepo.findStaffByStaffId(staff_id);
         if (staff != null) {

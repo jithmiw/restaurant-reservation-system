@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.math.BigDecimal;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -16,5 +18,6 @@ public class TableDTO {
     private String table_type;
     private int seating_capacity;
     private String location;
+    private BigDecimal reservation_fee;
     private String status;
 }

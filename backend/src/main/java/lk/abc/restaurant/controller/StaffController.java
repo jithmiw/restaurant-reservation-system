@@ -44,6 +44,11 @@ public class StaffController {
         return new ResponseUtil(200, "Staff member exists", staffDTO);
     }
 
+    @GetMapping(path = "/generateStaffId")
+    public ResponseUtil generateStaffId() {
+        return new ResponseUtil(200, "Staff id generated", staffService.generateNewStaffId());
+    }
+
 //    @GetMapping(params = {"staff_id"})
 //    public ResponseUtil getStaffSchedulesByStaffId(@RequestParam String staff_id) {
 //        return new ResponseUtil(200, "Successfully Loaded", staffService.getStaffSchedulesByStaffId(staff_id));

@@ -13,6 +13,8 @@ public interface StaffService {
 
     void deleteStaff(String staff_id);
 
+    String generateNewStaffId();
+
     StaffDTO verifyStaff(String username, String password);
 
     StaffDTO getStaffByStaffId(String staff_id);

@@ -11,6 +11,8 @@ public interface TableService {
 
     void deleteTable(String table_id);
 
+    String generateNewTableId();
+
     ArrayList<TableDTO> getAllTables();
 
     TableDTO findTableByTableId(String table_id);

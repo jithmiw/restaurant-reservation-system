@@ -267,7 +267,7 @@
                     <button class="btn btn-outline-light" id="btnSearchTable" type="button">Search</button>
                 </form>
             </div>
-            <form class="row g-3 mt-0 me-0 ms-0 mb-5 bg-white" id="TableForm">
+            <form class="row g-3 mt-0 me-0 ms-0 mb-5 bg-white" id="tableForm">
                 <div class="col-md-3">
                     <label class="form-label" for="inputTableId">Table Id</label>
                     <input class="form-control" id="inputTableId" name="table_id" type="text">
@@ -278,7 +278,7 @@
                 </div>
                 <div class="col-md-3">
                     <label class="form-label" for="inputType">Table Type</label>
-                    <select class="form-select fw-light" id="inputType" name="type">
+                    <select class="form-select fw-light" id="inputType" name="table_type">
                         <option selected>Choose Type</option>
                         <option>Standard</option>
                         <option>Booth</option>
@@ -289,11 +289,11 @@
                 </div>
                 <div class="col-md-3">
                     <label class="form-label" for="inputCapacity">Seating Capacity</label>
-                    <input class="form-control" id="inputCapacity" name="capacity" type="number">
+                    <input class="form-control" id="inputCapacity" name="seating_capacity" type="number">
                 </div>
                 <div class="col-md-3">
                     <label class="form-label" for="inputLocation">Location</label>
-                    <select class="form-select fw-light" id="inputLocation" name="type">
+                    <select class="form-select fw-light" id="inputLocation" name="location">
                         <option selected>Choose Type</option>
                         <option>Main Dining Area</option>
                         <option>Outdoor Patio</option>
@@ -314,11 +314,12 @@
                     </select>
                 </div>
                 <div class="col-md-3">
-                    <label class="form-label" for="inputTableImage">Table Image</label>
-                    <input class="form-control" id="inputTableImage" name="table_image" type="file">
+                    <label class="form-label" for="inputImage">Table Image</label>
+                    <input class="form-control" id="inputImage" name="image" type="file">
                 </div>
                 <div class="d-flex flex-column flex-sm-row justify-content-center mt-4">
-                    <button class="btn btn-dark mt-1 mb-1 me-sm-2 ms-sm-2" id="saveTable" type="button">ADD</button>
+                    <button class="btn btn-dark mt-1 mb-1 me-sm-2 ms-sm-2" id="generateTableId" style="background-color: #76282f; border: none" type="button">NEW</button>
+                    <button class="btn btn-dark mt-1 mb-1 me-sm-2 ms-sm-2" id="saveTable" type="button">SAVE</button>
                     <button class="btn text-white mt-1 mb-1 me-sm-2 ms-sm-2" id="updateTable" style="background-color: #7f7f7f;"
                             type="button">UPDATE
                     </button>
@@ -405,8 +406,8 @@
             </div>
             <form class="row g-3 mt-0 me-0 ms-0 bg-white" id="staffForm">
                 <div class="col-md-3">
-                    <label class="form-label">Staff Id</label>
-                    <input class="form-control" id="staff-id" readonly type="text">
+                    <label class="form-label" for="inputStaffId">Staff Id</label>
+                    <input class="form-control" id="inputStaffId" readonly type="text">
                 </div>
                 <div class="col-md-3">
                     <label class="form-label" for="inputName">Name</label>
@@ -436,7 +437,8 @@
                     <input class="form-control" id="regDate" type="date">
                 </div>
                 <div class="d-flex flex-column flex-sm-row justify-content-center mt-5 mb-3">
-                    <button class="btn btn-dark mt-1 mb-1 me-sm-2 ms-sm-2" id="saveStaff" type="button">ADD</button>
+                    <button class="btn btn-dark mt-1 mb-1 me-sm-2 ms-sm-2" id="generateStaffId" style="background-color: #76282f; border: none" type="button">NEW</button>
+                    <button class="btn btn-dark mt-1 mb-1 me-sm-2 ms-sm-2" id="saveStaff" type="button">SAVE</button>
                     <button class="btn text-white mt-1 mb-1 me-sm-2 ms-sm-2" id="updateStaff" style="background-color: #7f7f7f;"
                             type="button">UPDATE
                     </button>

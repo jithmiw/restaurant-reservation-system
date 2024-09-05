@@ -1,7 +1,7 @@
 package lk.abc.restaurant.service.impl;
 
 import lk.abc.restaurant.dto.TableDTO;
-import lk.abc.restaurant.entity.Table;
+import lk.abc.restaurant.entity.RestaurantTable;
 import lk.abc.restaurant.repo.TableRepo;
 import lk.abc.restaurant.service.TableService;
 import org.modelmapper.ModelMapper;
@@ -39,7 +39,7 @@ public class TableServiceImpl implements TableService {
                 dto.setStatus("Reserved");
                 break;
         }
-        tableRepo.save(mapper.map(dto, Table.class));
+        tableRepo.save(mapper.map(dto, RestaurantTable.class));
     }
 
     @Override
@@ -58,7 +58,7 @@ public class TableServiceImpl implements TableService {
                 dto.setStatus("Reserved");
                 break;
         }
-        tableRepo.save(mapper.map(dto, Table.class));
+        tableRepo.save(mapper.map(dto, RestaurantTable.class));
     }
 
     @Override
@@ -70,15 +70,26 @@ public class TableServiceImpl implements TableService {
     }
 
     @Override
+    public String generateNewTableId() {
+        String table_id = "";
+        table_id = tableRepo.getLastTableId();
+        if (table_id != null) {
+            int newTableId = Integer.parseInt(table_id.replace("TID-", "")) + 1;
+            return String.format("TID-%03d", newTableId);
+        }
+        return "TID-001";
+    }
+
+    @Override
     public ArrayList<TableDTO> getAllTables() {
-        List<Table> all = tableRepo.findAll();
+        List<RestaurantTable> all = tableRepo.findAll();
         return mapper.map(all, new TypeToken<ArrayList<TableDTO>>() {
         }.getType());
     }
 
     @Override
     public TableDTO findTableByTableId(String table_id) {
-        Table table = tableRepo.findById(table_id).get();
+        RestaurantTable table = tableRepo.findById(table_id).get();
         return mapper.map(table, TableDTO.class);
     }
 }
