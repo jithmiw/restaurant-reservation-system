@@ -15,7 +15,7 @@
 
     <title>ABC Restaurant</title>
 </head>
-<body>
+<body style="background-color: #0a0908">
 <header>
     <!--NAVIGATION BAR-->
     <nav class="navbar fixed-top navbar-dark navbar-expand-lg shadow" style="background-color: #0a0908">
@@ -68,7 +68,7 @@
                         </button>
                     </li>
                     <li class="nav-item">
-                        <button class="btn btn-outline-light fw-bold" id="logOut" type="button">
+                        <button class="btn btn-outline-light fw-light" id="logOut" type="button">
                             LOGOUT
                         </button>
                     </li>
@@ -203,36 +203,31 @@
                 </div>
                 <div class="col-md-3">
                     <label class="form-label">No of Guests</label>
-                    <input class="form-control" id="no-of-guests" readonly type="Time">
+                    <input class="form-control" id="no-of-guests" readonly type="number">
                 </div>
-<!--                <div class="col-md-3">-->
-<!--                    <label class="form-label">Staff Id</label>-->
-<!--                    <select class="form-select" id="selectStaffId"></select>-->
-<!--                </div>-->
                 <div class="col-md-3">
                     <label class="form-label">Reserved Date</label>
                     <input class="form-control" id="reserved-date" readonly type="Date">
                 </div>
                 <div class="d-flex flex-column flex-sm-row justify-content-center mt-4 mb-5">
-<!--                    <button class="btn btn-outline-secondary mt-1 mb-1 me-sm-2 ms-sm-2" id="changeStaff" type="button">-->
-<!--                        CHANGE STAFF-->
-<!--                    </button>-->
                     <!-- Calculate Payment Button trigger modal -->
                     <button class="btn btn-outline-secondary mt-1 mb-1 me-sm-2 ms-sm-2" data-bs-target="#calculatePaymentModal"
                             data-bs-toggle="modal" id="calculatePayment" type="button">
                         CALCULATE PAYMENT
                     </button>
+                    <button class="btn btn-secondary mt-1 mb-1 me-sm-2 ms-sm-2" id="cancelRequest" type="button">CANCEL
+                        REQUEST
+                    </button>
                 </div>
             </form>
-            <hr>
             <div class="d-flex flex-column flex-sm-row justify-content-center mt-5 mb-3">
-                <button class="btn btn-outline-dark mt-1 mb-1 me-sm-2 ms-sm-2" id="btnReserved" style="border-radius: 50px"
+                <button class="btn btn-outline-light mt-1 mb-1 me-sm-2 ms-sm-2" id="btnReserved" style="border-radius: 50px"
                         type="button">Reserved
                 </button>
-                <button class="btn btn-outline-dark mt-1 mb-1 me-sm-2 ms-sm-2" id="btnCancelled" style="border-radius: 50px"
+                <button class="btn btn-outline-light mt-1 mb-1 me-sm-2 ms-sm-2" id="btnCancelled" style="border-radius: 50px"
                         type="button">Cancelled
                 </button>
-                <button class="btn btn-outline-dark mt-1 mb-1 me-sm-2 ms-sm-2" id="btnClosed" style="border-radius: 50px"
+                <button class="btn btn-outline-light mt-1 mb-1 me-sm-2 ms-sm-2" id="btnClosed" style="border-radius: 50px"
                         type="button">Closed
                 </button>
             </div>
@@ -247,7 +242,6 @@
                     <th class="text-white" scope="col">Departure Time</th>
                     <th class="text-white" scope="col">No of Guests</th>
                     <th class="text-white" scope="col">Reservation Status</th>
-                    <th class="text-white" scope="col">Payment Status</th>
                     <th class="text-white" scope="col">Reserved Date</th>
                 </tr>
                 </thead>
@@ -267,7 +261,7 @@
                     <button class="btn btn-outline-light" id="btnSearchTable" type="button">Search</button>
                 </form>
             </div>
-            <form class="row g-3 mt-0 me-0 ms-0 mb-5 bg-white" id="tableForm">
+            <form class="row g-3 mt-0 me-0 ms-0 mb-4 bg-white pb-4" id="tableForm">
                 <div class="col-md-3">
                     <label class="form-label" for="inputTableId">Table Id</label>
                     <input class="form-control" id="inputTableId" name="table_id" type="text">
@@ -356,7 +350,7 @@
                     <button class="btn btn-outline-light" id="btnSearchCustomer" type="button">Search</button>
                 </form>
             </div>
-            <form class="row g-3 mt-0 me-0 ms-0 mb-5 bg-white">
+            <form class="row g-3 mt-0 me-0 ms-0 mb-4 pb-4 bg-white">
                 <div class="col-md-3">
                     <label class="form-label">Customer Id</label>
                     <input class="form-control" id="cus-id" readonly type="text">
@@ -404,10 +398,10 @@
                     <button class="btn btn-outline-light" id="btnSearchStaff" type="button">Search</button>
                 </form>
             </div>
-            <form class="row g-3 mt-0 me-0 ms-0 bg-white" id="staffForm">
+            <form class="row g-3 mt-0 me-0 ms-0 bg-white pb-4" id="staffForm">
                 <div class="col-md-3">
                     <label class="form-label" for="inputStaffId">Staff Id</label>
-                    <input class="form-control" id="inputStaffId" readonly type="text">
+                    <input class="form-control" id="inputStaffId" name="staff_id" type="text">
                 </div>
                 <div class="col-md-3">
                     <label class="form-label" for="inputName">Name</label>

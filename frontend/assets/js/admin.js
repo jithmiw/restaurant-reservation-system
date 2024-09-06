@@ -55,7 +55,7 @@ $('#home').click(function () {
 $('#manage-reservations').click(function () {
     $('#reservations').css('display', 'block');
     $('#dashboard, #tables, #customers, #payments, #staff').css('display', 'none');
-    // getReservationRequests();
+    getReservationRequests();
     $('#btnReserved').click();
 
 });
@@ -63,7 +63,7 @@ $('#manage-reservations').click(function () {
 $('#manage-tables').click(function () {
     $('#tables').css('display', 'block');
     $('#dashboard, #customers, #staff, #payments, #reservations').css('display', 'none');
-    // getReservationRequests();
+    getReservationRequests();
     $('#btnReserved').click();
 });
 
@@ -82,24 +82,24 @@ $('#view-customers').click(function () {
 $('#view-payments').click(function () {
     $('#payments').css('display', 'block');
     $('#dashboard, #reservations, #tables, #staff, #customers').css('display', 'none');
-    getAllPayments();
+    // getAllPayments();
 });
 
 function setDashboard() {
     getAllCustomers();
     getAllTables();
-    // getReservationRequests();
-    getAllPayments();
+    getReservationRequests();
+    // getAllPayments();
 }
 
-let reservation = [];
+let reserved = [];
 let closed = [];
 let cancelled = [];
 
 // get reservation requests
 function getReservationRequests() {
     let todayBookings = 0;
-    reservation = [];
+    reserved = [];
     closed = [];
     cancelled = [];
     $.ajax({
@@ -117,7 +117,7 @@ function getReservationRequests() {
                     let reservationStatus = r.reservation_status;
 
                     if (reservationStatus === "Reserved") {
-                        reservation.push(r);
+                        reserved.push(r);
                     } else if (reservationStatus === "Closed") {
                         closed.push(r);
                     } else {
@@ -133,6 +133,10 @@ function getReservationRequests() {
         }
     });
 }
+
+$('#btnReserved').click(function () {
+    setTableRows(reserved);
+});
 
 $('#btnCancelled').click(function () {
     setTableRows(cancelled);
@@ -152,13 +156,13 @@ function setTableRows(array) {
         let reservationDate = r.reservation_date;
         let arrivalTime = r.arrival_time;
         let departureTime = r.departure_time;
-        // let staffStatus = r.staff_status;
+        let noOfGuests = r.no_of_guests;
         let reservationStatus = r.reservation_status;
         let reservedDate = r.reserved_date;
 
         let row = "<tr><td>" + reservationId + "</td><td>" + customerId + "</td><td>" + tableId + "</td>" +
-            "<td>" + reservationDate + "</td><td>" + arrivalTime + "</td><td>" + departureTime + "</td><td>" + reservationStatus + "</td>" +
-            "<td>" + reservedDate + "</td><td class='d-none'>";
+            "<td>" + reservationDate + "</td><td>" + arrivalTime + "</td><td>" + departureTime + "</td><td>" + noOfGuests + "</td><td>" + reservationStatus + "</td>" +
+            "<td>" + reservedDate + "</td>";
         $('#tblReservations').append(row);
     });
     bindClickEventsToRows();
@@ -186,30 +190,30 @@ function bindClickEventsToRows() {
         $('#reserved-date').val(reservedDate);
         clearPaymentForm();
 
-        // if (reservationStatus !== "Reserved" && reservationStatus !== "Cancelled" && reservationStatus !== "Closed") {
-        //     $('#reservation-status').val(reservationStatus);
-        //     $('#reservation-status-hd').text('(Denied)');
-        // } else {
-        //     $('#reservation-status').val('');
-        //     $('#reservation-status-hd').text('(' + reservationStatus + ')');
-        // }
-        if (staffStatus === "Yes") {
-            $("#selectStaffId").empty();
-            $.ajax({
-                url: baseUrl + "staff/reservationId/" + reservationId,
-                success: function (res) {
-                    let staffId = res.data;
-                    $("#selectStaffId").append(`<option selected value="${staffId}">${staffId}</option>`);
-                    loadAllStaff(staffId);
-                },
-                error: function (error) {
-                    console.log(JSON.parse(error.responseText).message);
-                }
-            });
+        if (reservationStatus !== "Reserved" && reservationStatus !== "Cancelled" && reservationStatus !== "Closed") {
+            $('#reservation-status').val(reservationStatus);
+            $('#reservation-status-hd').text('(Denied)');
         } else {
-            $("#selectStaffId").empty();
-            $("#selectStaffId").append(`<option selected value="No">No</option>`);
+            $('#reservation-status').val('');
+            $('#reservation-status-hd').text('(' + reservationStatus + ')');
         }
+        // if (staffStatus === "Yes") {
+        //     $("#selectStaffId").empty();
+        //     $.ajax({
+        //         url: baseUrl + "staff/reservationId/" + reservationId,
+        //         success: function (res) {
+        //             let staffId = res.data;
+        //             $("#selectStaffId").append(`<option selected value="${staffId}">${staffId}</option>`);
+        //             loadAllStaff(staffId);
+        //         },
+        //         error: function (error) {
+        //             console.log(JSON.parse(error.responseText).message);
+        //         }
+        //     });
+        // } else {
+        //     $("#selectStaffId").empty();
+        //     $("#selectStaffId").append(`<option selected value="No">No</option>`);
+        // }
     });
 }
 
@@ -300,8 +304,7 @@ function bindClickEventsToTableRows() {
         $('#inputStatus option').each(function () {
             if (status === "Available") {
                 $("#inputStatus option[value=1]").attr('selected', 'selected');
-            }
-            else if (status === "Not Available") {
+            } else if (status === "Not Available") {
                 $("#inputStatus option[value=2]").attr('selected', 'selected');
             } else {
                 $("#inputStatus option[value=3]").attr('selected', 'selected');
@@ -386,6 +389,7 @@ $("#cancelRequest").click(function () {
             success: function (res) {
                 alert(res.message);
                 getReservationRequests();
+                $('#btnCancelled').click();
                 clearForm();
             },
             error: function (error) {
@@ -651,16 +655,19 @@ function clearManageTablesForm() {
 $("#logOut").click(function () {
     if (confirm('Are sure you want to logout?')) {
         window.location.href = "index.html";
-
-        function disableBack() {
-            window.history.forward()
-        }
-
-        window.onload = disableBack();
-        window.onpageshow = function (e) {
-            if (e.persisted)
-                disableBack();
-        }
+        disableBackButton();
     }
 });
+
+function disableBackButton() {
+    function disableBack() {
+        window.history.forward()
+    }
+
+    window.onload = disableBack();
+    window.onpageshow = function (e) {
+        if (e.persisted)
+            disableBack();
+    }
+}
 

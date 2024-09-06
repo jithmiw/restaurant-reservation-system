@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
 @NoArgsConstructor
@@ -26,7 +28,4 @@ public class Staff {
     private String password;
     @CreationTimestamp
     private LocalDate reg_date;
-
-//    @OneToMany(mappedBy = "staff", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<StaffSchedule> staffSchedules = new ArrayList<>();
 }
