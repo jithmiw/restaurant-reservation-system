@@ -45,6 +45,12 @@
                     </li>
                     <li class="nav-item">
                         <button class="btn btn-link text-decoration-none nav-link active fw-light"
+                                id="manage-items"
+                                type="button">MENU
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-link text-decoration-none nav-link active fw-light"
                                 id="manage-tables"
                                 type="button">TABLES
                         </button>
@@ -250,6 +256,72 @@
             </table>
         </div>
     </section>
+    <!--MENU ITEMS SECTION-->
+    <section id="items" style="margin-top: 100px;">
+        <div class="container-fluid mt-5 mb-5 pt-4">
+            <div class="navbar navbar-expand-lg d-flex flex-column flex-sm-row justify-content-between" style="background: linear-gradient(to right, black, #972731);">
+                <div class="navbar-brand ms-2 text-white">Menu Items</div>
+                <form class="d-flex ms-2 me-2" role="search">
+                    <input aria-label="Search" class="form-control me-2" id="searchItem" placeholder="Search"
+                           type="search">
+                    <button class="btn btn-outline-light" id="btnSearchItem" type="button">Search</button>
+                </form>
+            </div>
+            <form class="row g-3 mt-0 me-0 ms-0 mb-4 bg-white pb-4" id="itemForm">
+                <div class="col-md-3">
+                    <label class="form-label" for="inputItemId">Item Id</label>
+                    <input class="form-control" id="inputItemId" name="item_id" type="text">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label" for="inputItemName">Item Name</label>
+                    <input class="form-control" id="inputItemName" name="item_name" type="text">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label" for="inputDesc">Description</label>
+                    <input class="form-control" id="inputDesc" name="description" type="text">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label" for="inputPrice">Price(Rs.)</label>
+                    <input class="form-control" id="inputPrice" name="price" type="number">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label" for="inputAvailability">Available or Not Available?</label>
+                    <select class="form-select fw-light" id="inputAvailability" name="status">
+                        <option value="0">Choose Available or Not Available?</option>
+                        <option value="1">Available</option>
+                        <option value="2">Not Available</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label" for="inputItemImage">Item Image</label>
+                    <input class="form-control" id="inputItemImage" name="item_image" type="file">
+                </div>
+                <div class="d-flex flex-column flex-sm-row justify-content-center mt-4">
+                    <button class="btn btn-dark mt-1 mb-1 me-sm-2 ms-sm-2" id="generateItemId" style="background-color: #76282f; border: none" type="button">NEW</button>
+                    <button class="btn btn-dark mt-1 mb-1 me-sm-2 ms-sm-2" id="saveItem" type="button">SAVE</button>
+                    <button class="btn text-white mt-1 mb-1 me-sm-2 ms-sm-2" id="updateItem" style="background-color: #7f7f7f;"
+                            type="button">UPDATE
+                    </button>
+                    <button class="btn mt-1 mb-1 me-sm-2 ms-sm-2" id="deleteItem" style="background-color: #c2c2c2;" type="button">DELETE
+                    </button>
+                    <button class="btn mt-1 mb-1 me-sm-2 ms-sm-2" id="viewItems" style="background-color: #e7e7e7;" type="button">VIEW ALL ITEMS</button>
+                </div>
+            </form>
+            <table class="table table-bordered table-hover mt-4">
+                <thead style="background: linear-gradient(to right, #972731, black);">
+                <tr>
+                    <th class="text-white" scope="col">Item Id</th>
+                    <th class="text-white" scope="col">Item Name</th>
+                    <th class="text-white" scope="col">Description</th>
+                    <th class="text-white" scope="col">Price(Rs.)</th>
+                    <th class="text-white" scope="col">Status</th>
+                </tr>
+                </thead>
+                <tbody class="table-light" id="tblItems" style="overflow-y:auto;">
+                </tbody>
+            </table>
+        </div>
+    </section>
     <!--TABLES SECTION-->
     <section id="tables" style="margin-top: 100px;">
         <div class="container-fluid mt-5 mb-5 pt-4">
@@ -308,8 +380,8 @@
                     </select>
                 </div>
                 <div class="col-md-3">
-                    <label class="form-label" for="inputImage">Table Image</label>
-                    <input class="form-control" id="inputImage" name="image" type="file">
+                    <label class="form-label" for="inputTableImage">Table Image</label>
+                    <input class="form-control" id="inputTableImage" name="table_image" type="file">
                 </div>
                 <div class="d-flex flex-column flex-sm-row justify-content-center mt-4">
                     <button class="btn btn-dark mt-1 mb-1 me-sm-2 ms-sm-2" id="generateTableId" style="background-color: #76282f; border: none" type="button">NEW</button>
@@ -475,7 +547,6 @@
                     <th class="text-white" scope="col">Payment Id</th>
                     <th class="text-white" scope="col">Reservation Id</th>
                     <th class="text-white" scope="col">Reservation Fee(Rs.)</th>
-<!--                    <th class="text-white" scope="col">Delivery Fee(Rs.)</th>-->
                     <th class="text-white" scope="col">Total Payment(Rs.)</th>
                     <th class="text-white" scope="col">Payment Date</th>
                 </tr>
@@ -510,10 +581,6 @@
                             <label class="form-label" for="reservation-fee">Reservation Fee(Rs.)</label>
                             <input class="form-control" id="reservation-fee" name="reservation_fee" readonly type="number">
                         </div>
-<!--                        <div class="col-md-6">-->
-<!--                            <label class="form-label" for="delivery-fee">Delivery Fee(Rs.)</label>-->
-<!--                            <input class="form-control" id="delivery-fee" name="delivery_fee" readonly type="number">-->
-<!--                        </div>-->
                         <div class="col-md-6">
                             <label class="form-label" for="total-payment">Total Payment(Rs.)</label>
                             <input class="form-control" id="total-payment" name="total_payment" readonly type="number">

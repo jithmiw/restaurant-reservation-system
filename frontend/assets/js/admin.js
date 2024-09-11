@@ -4,6 +4,27 @@ $(document).ready(function () {
     $('#home').click();
 });
 
+$("#generateItemId").click(function () {
+    $.ajax({
+        url: baseUrl + "item/generateItemId",
+        method: "get",
+        dataType: "json",
+        success: function (res) {
+            if (res.status === 200 && res.data) {
+                $('#inputItemId').val(res.data);
+            } else {
+                console.error("Failed to generate item ID:", res.message);
+                alert("Failed to generate item ID. Please try again.");
+            }
+        },
+        error: function (error) {
+            console.error("Error fetching item ID:", error);
+            alert("Error fetching item ID. Please try again.");
+        }
+    });
+    $('#inputItemName, #inputDesc, #inputPrice, #inputAvailability, #inputItemImage').val("");
+});
+
 $("#generateTableId").click(function () {
     $.ajax({
         url: baseUrl + "table/generateTableId",
@@ -22,7 +43,7 @@ $("#generateTableId").click(function () {
             alert("Error fetching table ID. Please try again.");
         }
     });
-    $('#inputType, #inputTableNo, #inputCapacity, #inputLocation, #inputReservationFee, #inputStatus, #inputImage').val("");
+    $('#inputType, #inputTableNo, #inputCapacity, #inputLocation, #inputReservationFee, #inputStatus, #inputTableImage').val("");
 });
 
 $("#generateStaffId").click(function () {
@@ -48,28 +69,35 @@ $("#generateStaffId").click(function () {
 
 $('#home').click(function () {
     $('#dashboard').css('display', 'block');
-    $('#reservations, #tables, #customers, #staff, #payments').css('display', 'none');
+    $('#reservations, #tables, #customers, #staff, #payments, #items').css('display', 'none');
     setDashboard();
 });
 
 $('#manage-reservations').click(function () {
     $('#reservations').css('display', 'block');
-    $('#dashboard, #tables, #customers, #payments, #staff').css('display', 'none');
+    $('#dashboard, #tables, #customers, #payments, #staff, #items').css('display', 'none');
     getReservationRequests();
     $('#btnReserved').click();
 
 });
 
+$('#manage-items').click(function () {
+    $('#items').css('display', 'block');
+    $('#dashboard, #customers, #staff, #payments, #reservations, #tables').css('display', 'none');
+    getReservationRequests();
+    $('#btnReserved').click();
+});
+
 $('#manage-tables').click(function () {
     $('#tables').css('display', 'block');
-    $('#dashboard, #customers, #staff, #payments, #reservations').css('display', 'none');
+    $('#dashboard, #customers, #staff, #payments, #reservations, #items').css('display', 'none');
     getReservationRequests();
     $('#btnReserved').click();
 });
 
 $('#manage-staff').click(function () {
     $('#staff').css('display', 'block');
-    $('#dashboard, #tables, #customers, #reservations, #payments').css('display', 'none');
+    $('#dashboard, #tables, #customers, #reservations, #payments, #items').css('display', 'none');
     getAllStaff();
 });
 
@@ -82,14 +110,15 @@ $('#view-customers').click(function () {
 $('#view-payments').click(function () {
     $('#payments').css('display', 'block');
     $('#dashboard, #reservations, #tables, #staff, #customers').css('display', 'none');
-    // getAllPayments();
+    getAllPayments();
 });
 
 function setDashboard() {
     getAllCustomers();
     getAllTables();
+    // getAllItems();
     getReservationRequests();
-    // getAllPayments();
+    getAllPayments();
 }
 
 let reserved = [];
@@ -281,6 +310,47 @@ function getAllTables() {
     });
 }
 
+// get tables
+function getAllTables() {
+    let availableTables = 0;
+    let reservedTables = 0;
+    $('#tblTables').empty();
+    $.ajax({
+        url: baseUrl + "table",
+        success: function (res) {
+            if (res.data != null) {
+                for (let c of res.data) {
+                    let tableId = c.table_id;
+                    let tableNo = c.table_no;
+                    let tableType = c.table_type;
+                    let seatingCapacity = c.seating_capacity;
+                    let location = c.location;
+                    let reservationFee = c.reservation_fee;
+                    let status = c.status;
+
+                    if (status === "Available") {
+                        availableTables++;
+                    } else if (status === "Reserved") {
+                        reservedTables++;
+                    }
+
+                    let row = "<tr><td>" + tableId + "</td><td>" + tableNo + "</td><td>" + tableType + "</td>" +
+                        "<td>" + seatingCapacity + "</td><td>" + location + "</td><td>" + reservationFee + "</td>" +
+                        "<td>" + status + "</td></tr>";
+                    $('#tblTables').append(row);
+                }
+                bindClickEventsToTableRows();
+            }
+            clearManageTablesForm();
+            $('#availableTables').text(availableTables);
+            $('#reservedTables').text(reservedTables);
+        },
+        error: function (error) {
+            alert(JSON.parse(error.responseText).message);
+        }
+    });
+}
+
 // bind events for the table rows
 function bindClickEventsToTableRows() {
     $('#tblTables > tr').on('click', function () {
@@ -299,7 +369,7 @@ function bindClickEventsToTableRows() {
         $('#inputCapacity').val(seatingCapacity);
         $('#inputLocation').val(location);
         $('#inputReservationFee').val(reservation_fee);
-        $('#inputImage').val(image);
+        $('#inputTableImage').val(image);
 
         $('#inputStatus option').each(function () {
             if (status === "Available") {
@@ -537,6 +607,146 @@ function bindClickEventsToStaffRows() {
     });
 }
 
+// add item
+$("#saveItem").click(function () {
+    let formData = $('#itemForm').serialize();
+    $.ajax({
+        url: baseUrl + "item",
+        method: "post",
+        data: formData,
+        dataType: "json",
+        success: function (res) {
+            console.log(res);
+            if (res.status === 200) {
+                getAllItems();
+            }
+            alert(res.message);
+        },
+        error: function (error) {
+            console.log(JSON.parse(error.responseText));
+            alert(JSON.parse(error.responseText).message);
+        }
+    });
+});
+
+// update item
+$('#updateItem').click(function () {
+    let itemId = $('#inputItemId').val();
+
+    if (confirm('Are sure you want to update the item in ' + itemId + '?')) {
+        let itemName = $('#inputItemName').val();
+        let desc = $('#inputDesc').val();
+        let price = $('#inputPrice').val();
+        let availablility = $('#inputAvailability').val();
+
+        var itemOb = {
+            item_id: itemId,
+            item_name: itemName,
+            description: desc,
+            price: price,
+            status: availablility
+        }
+        $.ajax({
+            url: baseUrl + "item",
+            method: "put",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify(itemOb),
+            success: function (res) {
+                if (res.status === 200) {
+                    getAllItems();
+                    $('#inputAvailability').val('');
+                }
+                alert(res.message);
+            },
+            error: function (error) {
+                alert(JSON.parse(error.responseText).message);
+            }
+        });
+    }
+});
+
+// delete item
+$('#deleteItem').click(function () {
+    let itemId = $('#inputItemId').val();
+
+    if (confirm('Are sure you want to delete the item in ' + itemId + '?')) {
+        $.ajax({
+            url: baseUrl + "item?item_id=" + itemId,
+            method: "delete",
+            success: function (res) {
+                alert(res.message);
+                getAllItems();
+                $('#inputAvailability').val('');
+            },
+            error: function (error) {
+                alert(JSON.parse(error.responseText).message);
+            }
+        });
+    }
+});
+
+// get items
+function getAllItems() {
+    $('#tblItems').empty();
+    $.ajax({
+        url: baseUrl + "item",
+        success: function (res) {
+            if (res.data != null) {
+                for (let c of res.data) {
+                    let itemId = c.item_id;
+                    let itemName = c.item_name;
+                    let description = c.description;
+                    let price = c.price;
+                    let status = c.status;
+
+                    let row = "<tr><td>" + itemId + "</td><td>" + itemName + "</td><td>" + description + "</td>" +
+                        "<td>" + price + "</td><td>" + status + "</td></tr>";
+                    $('#tblItems').append(row);
+                }
+                bindClickEventsToItemRows();
+            }
+            clearManageItemsForm();
+        },
+        error: function (error) {
+            alert(JSON.parse(error.responseText).message);
+        }
+    });
+}
+
+// bind events for the item rows
+function bindClickEventsToItemRows() {
+    $('#tblItems > tr').on('click', function () {
+        let itemId = $(this).children(':eq(0)').text();
+        let itemName = $(this).children(':eq(1)').text();
+        let description = $(this).children(':eq(2)').text();
+        let price = $(this).children(':eq(3)').text();
+        let status = $(this).children(':eq(4)').text();
+        let image = $(this).children(':eq(5)').text();
+
+        $('#inputItemId').val(itemId);
+        $('#inputItemName').val(itemName);
+        $('#inputDesc').val(description);
+        $('#inputPrice').val(price);
+        $('#inputTableImage').val(image);
+
+        $('#inputAvailability option').each(function () {
+            if (status === "Available") {
+                $("#inputAvailability option[value=1]").attr('selected', 'selected');
+            } else if (status === "Not Available") {
+                $("#inputAvailability option[value=2]").attr('selected', 'selected');
+            } else {
+                $("#inputAvailability option[value=3]").attr('selected', 'selected');
+            }
+        });
+    });
+}
+
+function clearManageItemsForm() {
+    $('#inputItemId, #inputItemName, #inputDesc, #inputPrice, #inputAvailability, #inputItemImage').val("");
+    $('#inputAvailability option[value=0]').attr('selected', 'selected');
+}
+
 // add table
 $("#saveTable").click(function () {
     let formData = $('#tableForm').serialize();
@@ -562,7 +772,7 @@ $("#saveTable").click(function () {
 
 // function uploadTableImage() {
 //     let data = new FormData();
-//     let image = $("#inputImage")[0].files[0];
+//     let image = $("#inputTableImage")[0].files[0];
 //     let tableId = $("#inputTableId").val();
 //
 //     data.append("image", image, image.name);
@@ -647,8 +857,112 @@ $('#deleteTable').click(function () {
 });
 
 function clearManageTablesForm() {
-    $('#inputTableId, #inputType, #inputTableNo, #inputCapacity, #inputLocation, #inputReservationFee, #inputStatus, #inputImage').val("");
+    $('#inputTableId, #inputType, #inputTableNo, #inputCapacity, #inputLocation, #inputReservationFee, #inputStatus, #inputTableImage').val("");
     $('#inputStatus option[value=0]').attr('selected', 'selected');
+}
+
+$(document).on('show.bs.modal', '#calculatePaymentModal', function (e) {
+    generateNewId();
+    calculateRates();
+    $('#payment-reservation-id').val($('#reservation-id').val());
+});
+
+function generateNewId() {
+    $.ajax({
+        url: baseUrl + "paymentDetail/generatePaymentId",
+        success: function (res) {
+            $('#payment-id').val(res.data);
+        },
+        error: function (error) {
+            alert(JSON.parse(error.responseText).message);
+        }
+    });
+}
+
+function calculateRates() {
+    let tableId = $('#table-id').val();
+    $.ajax({
+        url: baseUrl + "table?table_id=" + tableId,
+        success: function (res) {
+            let reservationFee = res.data.reservation_fee;
+
+            if ($('#reservation-status-hd').text() === '(Denied)' || $('#reservation-status-hd').text() === '(Cancelled)') {
+                $('#reservation-fee, #total-payment').val(0);
+            } else {
+                $('#rental-fee').val(reservationFee);
+            }
+        },
+        error: function (error) {
+            alert(JSON.parse(error.responseText).message);
+        }
+    });
+}
+
+function clearPaymentForm() {
+    $('#reservation-status-hd, #reservation-fee,  #total-payment').val('');
+    $("#calculatePaymentModal .btn-close").click();
+}
+
+// add payment detail
+$("#btnPay").click(function () {
+    let paymentDTO = {};
+    let dataArray = $('#paymentForm').serializeArray();
+    for (let i in dataArray) {
+        paymentDTO[dataArray[i].name] = dataArray[i].value;
+    }
+    $.ajax({
+        url: baseUrl + "paymentDetail",
+        method: "post",
+        contentType: "application/json",
+        data: JSON.stringify(paymentDTO),
+        success: function (res) {
+            alert(res.message);
+            clearPaymentForm();
+            $('#payment-id').val('');
+            $('#payment-reservation-id').val('');
+            getReservationRequests();
+            $('#btnClosed').click();
+        },
+        error: function (error) {
+            alert(JSON.parse(error.responseText).message);
+        }
+    });
+});
+
+// get payments
+function getAllPayments() {
+    let dailyIncome = 0;
+    $('#tblPayments').empty();
+    $.ajax({
+        url: baseUrl + "paymentDetail",
+        success: function (res) {
+            if (res.data != null) {
+                for (let p of res.data) {
+                    let payDate = new Date(p.payment_date);
+                    let currDate = new Date();
+
+                    if (payDate.setHours(0, 0, 0, 0) ===
+                        currDate.setHours(0, 0, 0, 0)) {
+                        dailyIncome += p.total_payment;
+                    }
+
+                    let paymentId = p.payment_id;
+                    let reservationId = p.reservation_id;
+                    let reservationFee = p.reservation_fee;
+                    let totalPayment = p.total_payment;
+                    let paymentDate = p.payment_date;
+
+                    let row = "<tr><td>" + paymentId + "</td><td>" + reservationId + "</td><td>" + reservationFee + "</td>" +
+                        "<td>" + totalPayment + "</td><td>" + paymentDate + "</td></tr>";
+                    $('#tblPayments').append(row);
+                }
+                $('#dailyIncome').text(dailyIncome);
+            }
+        },
+        error: function (error) {
+            alert(JSON.parse(error.responseText).message);
+        }
+    });
 }
 
 // log out
