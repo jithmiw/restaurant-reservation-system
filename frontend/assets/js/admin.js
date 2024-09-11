@@ -206,15 +206,17 @@ function bindClickEventsToRows() {
         let reservationDate = $(this).children(':eq(3)').text();
         let arrivalTime = $(this).children(':eq(4)').text();
         let departureTime = $(this).children(':eq(5)').text();
-        let reservationStatus = $(this).children(':eq(6)').text();
-        let reservedDate = $(this).children(':eq(7)').text();
+        let noOfGuests = $(this).children(':eq(6)').text();
+        let reservationStatus = $(this).children(':eq(7)').text();
+        let reservedDate = $(this).children(':eq(8)').text();
 
         $('#reservation-id').val(reservationId);
         $('#table-id').val(tableId);
-        $('#cus-id').val(customerId);
+        $('#customer-id').val(customerId);
         $('#reservation-date').val(reservationDate);
         $('#arrival-time').val(arrivalTime);
         $('#departure-time').val(departureTime);
+        $('#no-of-guests').val(noOfGuests);
         $('#reservation-status').val(reservationStatus);
         $('#reserved-date').val(reservedDate);
         clearPaymentForm();
